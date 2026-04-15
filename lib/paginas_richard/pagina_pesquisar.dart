@@ -66,7 +66,7 @@ Widget buildCategoriaContainer({
       borderRadius: BorderRadius.circular(12), // Definir tamanho da borda
       child: Stack( // coloca elementos um cime do outro
         children: [
-          // Imahgem de Fundo
+          // Imagem de Fundo
           Positioned.fill(
             child: Image.network(
               urlImage,

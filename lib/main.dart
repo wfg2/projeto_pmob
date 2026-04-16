@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/paginas_richard/pagina_pesquisar.dart';
 
 void main() {
+<<<<<<< HEAD
   runApp(const MyApp());
 }
 
@@ -119,4 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+=======
+  // Rodar tela de pesquisa
+  runApp(MaterialApp(home: TelaPesquisa()));
+>>>>>>> master
 }

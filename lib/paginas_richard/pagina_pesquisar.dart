@@ -45,8 +45,8 @@ class _TelaPesquisaState extends State<TelaPesquisa> {
           ),
 
           buildCategoriaContainer(
-            urlImage: 'https://www.ogastronomo.com.br/upload/690979078-massas-frescas-saiba-mais-sobre-esse-tipo-de-massa.jpg',
-            nomeCategoria: '',
+            urlImage: 'https://guiadacozinha.com.br/wp-content/uploads/2018/10/saladadekaniepepino.webp',
+            nomeCategoria: 'SALADAS',
           ),
         ],
       ),
@@ -75,16 +75,33 @@ Widget buildCategoriaContainer({
           ),
           // Overlay escuro para contraste do texto na image,
           // O texto no centro da imagem
-          Center(
-            child: Text(
-              nomeCategoria.toUpperCase(),
-              style: const TextStyle (
-                color: Colors.white, // cor do texto
-                fontSize: 28,
-                fontWeight: FontWeight.bold
-              )
-            ),
-          )
+    // 2. O texto com borda centralizado
+    Center(
+      child: Stack(
+          children: [
+          // TEXTO DE BAIXO: A Borda (Contorno escuro)
+          Text(
+          nomeCategoria.toUpperCase(),
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            foreground: Paint()
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 4.0 // Grossura da borda
+            ..color = Colors.black, // Cor da borda
+          ),
+        ),
+        // TEXTO DE CIMA: O Preenchimento (Branco)
+        Text(
+        nomeCategoria.toUpperCase(),
+        style: const TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+              )),
+          ],
+      ),
+    ),
         ],
       )
     )

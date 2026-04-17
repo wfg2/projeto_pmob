@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TelaPesquisa extends StatefulWidget {
   const TelaPesquisa({super.key});
@@ -11,19 +12,44 @@ class TelaPesquisa extends StatefulWidget {
 class _TelaPesquisaState extends State<TelaPesquisa> {
   Widget build(BuildContext context){
     return Scaffold(
+      appBar: AppBar(
+        // Cor da barra do aplicativo
+        backgroundColor: Color(0xFF1800ad),
+        title: SizedBox(
+          height: 40,
+        child: TextField(
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            hintText: 'O que você está procurando?',
+              // Ícone
+              prefixIcon: Icon(Icons.search),
+              // fundo branco da barra de pesquisa
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: BorderSide.none,
+            )
+          ),
+        ),
+      ),
+      ),
       body: ListView(
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
               "Categorias",
-              style: TextStyle(
-                fontSize: 24,
+              style: GoogleFonts.anton(
+                textStyle: TextStyle(
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Colors.purple,
-              )
+                color: Color(0xFF1800ad),
+                )
+            ),
             ),
           ),
+
           buildCategoriaContainer(
             urlImage: 'https://www.ogastronomo.com.br/upload/690979078-massas-frescas-saiba-mais-sobre-esse-tipo-de-massa.jpg',
             nomeCategoria: 'MASSAS',
@@ -31,7 +57,7 @@ class _TelaPesquisaState extends State<TelaPesquisa> {
 
           buildCategoriaContainer(
             urlImage: 'https://marettimo.com.br/blog/wp-content/uploads/2023/10/ainda-vida-com-frutos-do-mar-nao-cozidos-1-4.jpg',
-            nomeCategoria: 'PEIXES E FRUTOS DO MAR',
+            nomeCategoria: 'FRUTOS DO MAR',
           ),
 
           buildCategoriaContainer(
@@ -82,22 +108,26 @@ Widget buildCategoriaContainer({
           // TEXTO DE BAIXO: A Borda (Contorno escuro)
           Text(
           nomeCategoria.toUpperCase(),
-          style: TextStyle(
+          style: GoogleFonts.anton(
+            textStyle: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
             foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = 4.0 // Grossura da borda
-            ..color = Colors.black, // Cor da borda
+            ..color = Colors.black,
+            ),  // Cor da borda
           ),
         ),
         // TEXTO DE CIMA: O Preenchimento (Branco)
         Text(
         nomeCategoria.toUpperCase(),
-        style: const TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+        style: GoogleFonts.anton(
+          textStyle: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          )
               )),
           ],
       ),

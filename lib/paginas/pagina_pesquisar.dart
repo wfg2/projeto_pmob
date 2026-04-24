@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,34 +9,73 @@ class TelaPesquisa extends StatefulWidget {
 }
 
 class _TelaPesquisaState extends State<TelaPesquisa> {
+  int selectedIndex = 0;
+  List pages = [
+    Center(
+      child: Text(
+        'home',
+        style: TextStyle(fontSize: 32),
+      ),
+    ),
+    TelaPesquisa(),
+    Center(
+      child: Text(
+        'explorar',
+        style: TextStyle(fontSize: 32),
+      ),
+    ),
+    Center(
+      child: Text(
+        'favoritos',
+        style: TextStyle(fontSize: 32),
+      ),
+    ),
+    Center(
+      child: Text(
+        'configurações',
+        style: TextStyle(fontSize: 32),
+      ),
+    )
+  ];
+
   Widget build(BuildContext context){
     return Scaffold(
+      backgroundColor: Color(0xFF0fffef5),
       appBar: AppBar(
         // Cor da barra do aplicativo
         backgroundColor: Color(0xFF1800ad),
-        title: SizedBox(
-          height: 40,
-        child: TextField(
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            hintText: 'O que você está procurando?',
-              // Ícone
-              prefixIcon: Icon(Icons.search),
-              // fundo branco da barra de pesquisa
+        leading: Icon(
+            Icons.search,
+            color: Colors.white,
+          size: 40,
+        ),
+        titleSpacing: 6,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          child: TextField(
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              hintText:
+                'O que você está procurando?',
               filled: true,
               fillColor: Colors.white,
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 10,
+              ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
                 borderSide: BorderSide.none,
-            )
+              )
+            ),
           ),
         ),
       ),
-      ),
+
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(10.0),
             child: Text(
               "Categorias",
               style: GoogleFonts.anton(
@@ -76,6 +114,30 @@ class _TelaPesquisaState extends State<TelaPesquisa> {
           ),
         ],
       ),
+      bottomNavigationBar: buildBottomNavBar(),
+    );
+  }
+
+  buildBottomNavBar() {
+    return BottomNavigationBar(
+      backgroundColor: Color(0xFF1800ad),
+      currentIndex: selectedIndex,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Color(0xFF757575),
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      onTap: (index) {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.house), label: 'home'),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'buscar'),
+        BottomNavigationBarItem(icon: Icon(Icons.restaurant), label: 'explorar'),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'favoritos'),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'ajustes'),
+      ],
     );
   }
 }
@@ -87,7 +149,14 @@ Widget buildCategoriaContainer({
 }){
   return Container(
     height: 150, // Altura para manter o padrão da imagem
-    margin: EdgeInsets.all(16),
+    margin: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      border: Border.all(
+        color: const Color(0xFF1800ad),
+        width: 3.0,
+      ),
+      borderRadius: BorderRadius.circular(16)
+    ),
     child: ClipRRect( // Recortar borda
       borderRadius: BorderRadius.circular(12), // Definir tamanho da borda
       child: Stack( // coloca elementos um cime do outro
@@ -137,5 +206,3 @@ Widget buildCategoriaContainer({
     )
   );
 }
-
-

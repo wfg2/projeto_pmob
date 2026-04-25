@@ -38,9 +38,10 @@ class _TelaPesquisaState extends State<TelaPesquisa> {
     )
   ];
 
+  @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Color(0xFF0fffef5),
+      backgroundColor: Color(0xff0fffef5),
       appBar: AppBar(
         // Cor da barra do aplicativo
         backgroundColor: Color(0xFF1800ad),

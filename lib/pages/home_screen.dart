@@ -41,13 +41,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.restaurant, size: 30, color: Colors.white),
-        backgroundColor: Color(0xFF0000CB),
-        titleSpacing: 2,
-        title: Text('TalkFood',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
       body: pages[selectedIndex],
       bottomNavigationBar: buidBottonNavBar(),
     );
@@ -55,10 +48,10 @@ class _HomePageState extends State<HomePage> {
 
   buidBottonNavBar() {
     return BottomNavigationBar(
-      backgroundColor: Color(0xFF0000CB),
+      backgroundColor: Color(0xFF002566),
       currentIndex: selectedIndex,
       selectedItemColor: Colors.white,
-      unselectedItemColor: Color(0xFF757575),
+      unselectedItemColor: Color(0xff8693de),
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
@@ -67,12 +60,26 @@ class _HomePageState extends State<HomePage> {
         });
       },
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.house), label: 'home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'buscar'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant), label: 'explorar'),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'favoritos'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'ajustes'),
+            icon: Icon(Icons.house_outlined),
+            label: 'Home',
+            activeIcon: Icon(Icons.house)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.search_outlined),
+            label: 'Buscar',
+            activeIcon: Icon(Icons.search)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu_outlined),
+            label: 'Explorar',
+            activeIcon: Icon(Icons.restaurant_menu)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_outline),
+            label: 'Favoritos',
+            activeIcon: Icon(Icons.favorite)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Perfil',
+            activeIcon: Icon(Icons.person)),
       ],
     );
   }

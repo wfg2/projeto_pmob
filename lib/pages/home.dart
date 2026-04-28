@@ -20,7 +20,7 @@ class _homeState extends State<home> {
                 fontFamily: 'Allison', color: Colors.white, fontSize: 40)),
       ),
       body: ListView(children: [
-        buidContainer(
+        buildContainer(
             profilephoto:
             'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             username: 'Maria',
@@ -32,7 +32,7 @@ class _homeState extends State<home> {
             likes: '198',
             comments: '34',
             shares: '25'),
-        buidContainer(
+        buildContainer(
             profilephoto:
             'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             username: 'João',
@@ -44,7 +44,7 @@ class _homeState extends State<home> {
             likes: '135',
             comments: '20',
             shares: '12'),
-        buidContainer(
+        buildContainer(
             profilephoto:
             'https://static1.purebreak.com.br/articles/9/94/48/9/@/367444-any-gabrielly-e-uma-das-estrelas-do-now-580x0-2.jpg',
             username: 'Any',
@@ -56,7 +56,7 @@ class _homeState extends State<home> {
             likes: '198',
             comments: '34',
             shares: '25'),
-        buidContainer(
+        buildContainer(
             profilephoto:
             'https://static1.purebreak.com.br/articles/9/94/48/9/@/367444-any-gabrielly-e-uma-das-estrelas-do-now-580x0-2.jpg',
             username: 'Any',
@@ -72,7 +72,7 @@ class _homeState extends State<home> {
     );
   }
 
-  buidContainer(
+  buildContainer(
       {required String profilephoto,
         required String username,
         required String date_time,
@@ -97,7 +97,7 @@ class _homeState extends State<home> {
                       fontSize: 16,
                       fontFamily: 'Montserrat',
                       color: Color(0xFF002566))),
-              Spacer(flex: 2),
+              SizedBox(width: 170),
               Text(date_time,
                   style: const TextStyle(
                       fontSize: 12, fontFamily: 'Montserrat-Regular'))
@@ -220,7 +220,7 @@ class _homeState extends State<home> {
                       )
                     ],
                   ),
-                  SizedBox(width: 70,),
+                  SizedBox(width: 80,),
                   Text('Ver Receita',
                       style: TextStyle(
                           color: Color(0xFF002566),

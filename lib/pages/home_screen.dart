@@ -38,11 +38,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[selectedIndex],
-      bottomNavigationBar: buidBottonNavBar(),
+      bottomNavigationBar: buildBottonNavBar(),
     );
   }
 
-  buidBottonNavBar() {
+  buildBottonNavBar() {
     return BottomNavigationBar(
       backgroundColor: Color(0xFF002566),
       currentIndex: selectedIndex,

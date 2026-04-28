@@ -32,7 +32,13 @@ class _detalhesState extends State<detalhes> {
         appBar: AppBar(
           backgroundColor: Color(0xFF002566),
           leading:
-          Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 22),
+          IconButton(
+            onPressed: (){
+              print('voltar');
+            },
+            icon: Icon(Icons.arrow_back_ios_new,
+                color: Colors.white,
+                size: 22)),
           titleSpacing: 0,
           title: Text(
             'Lasanha de Frango',

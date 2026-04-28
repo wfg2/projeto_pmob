@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/pages/home.dart';
 
 class detalhes extends StatefulWidget {
   const detalhes({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _detalhesState extends State<detalhes> {
           leading:
           IconButton(
             onPressed: (){
-              print('voltar');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
             },
             icon: Icon(Icons.arrow_back_ios_new,
                 color: Colors.white,
@@ -244,7 +245,7 @@ class _detalhesState extends State<detalhes> {
                       ],
                     ),
                     Container(
-                        height: 400,
+                        height: 300,
                         child: abaSelecionada == 0
                             ? buildIngredientes()
                             : buildPreparo())
@@ -296,7 +297,7 @@ class _detalhesState extends State<detalhes> {
               backgroundColor: Color(0xFF002566),
               child: Text('${index + 1}', style: TextStyle(color: Colors.white)),
               ),
-              title: Text(preparo[index]),
+              title: Text(preparo[index], style: TextStyle(color: Color(0xFF002566), fontFamily: 'Montserrat-Regular', fontSize: 14),),
               ),
           ),
         ),);

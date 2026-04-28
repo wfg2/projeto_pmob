@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/home.dart';
+import 'package:projeto/pages/detalhes_receita.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,12 +13,7 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List pages = [
     home(),
-    Center(
-      child: Text(
-        'pesquisar',
-        style: TextStyle(fontSize: 32),
-      ),
-    ),
+    detalhes(),
     Center(
       child: Text(
         'explorar',

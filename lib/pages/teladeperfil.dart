@@ -107,7 +107,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                         "4",
                         "Receitas",
                       ),
-                      infoPerfil("15,7M", "Seguidores"),
+                      infoPerfil("16,7M", "Seguidores"),
                       infoPerfil("180", "Seguindo"),
                     ],
                   ))

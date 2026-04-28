@@ -28,7 +28,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
     {
       "nome": "Feijoada",
       "imagem":
-      "https://www.acasaencantada.com.br/wp-content/uploads/2021/05/86139_highlight-24.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRYmBoJQ3N90R6HuoSxGXrXMtvNBFZe-shA&s",
     },
   ];
 
@@ -93,10 +93,9 @@ class _TelaPerfilState extends State<TelaPerfil> {
               CircleAvatar(
                 radius: 45,
                 backgroundColor: Colors.blue,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 50,
+                child: CircleAvatar(
+                  radius: 42,
+                  backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUc9Q9l6oB_B5YAST0rpkH1T3ndI3yq49saQ&s"),
                 ),
               ),
               SizedBox(width: 20),
@@ -108,7 +107,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                         "4",
                         "Receitas",
                       ),
-                      infoPerfil("150", "Seguidores"),
+                      infoPerfil("15,7M", "Seguidores"),
                       infoPerfil("180", "Seguindo"),
                     ],
                   ))
@@ -122,7 +121,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Wade S. Gomez",
+                    "Ivete Sangalo",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -130,13 +129,13 @@ class _TelaPerfilState extends State<TelaPerfil> {
                     ),
                   ),
                   Text(
-                    "Apaixonado pela culinária nordestina ❤️🌵",
+                    "Apaixonada pela culinária nordestina ❤️🌵",
                     style: TextStyle(
                       color: Color(0xff100ea6),
                     ),
                   ),
                   Text(
-                    "Arapiraca - AL 🏡",
+                    "Brasil 🏡",
                     style: TextStyle(
                       color: Color(0xff100ea6),
                     ),

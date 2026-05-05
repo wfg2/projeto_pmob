@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/novareceita.dart';
 
+
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({Key? key}) : super(key: key);
+
 
   @override
   State<TelaPerfil> createState() => _TelaPerfilState();
 }
 
+
 class _TelaPerfilState extends State<TelaPerfil> {
-  final List<Map<String, String>> receitas = [
+  final List<Map<String, dynamic>> receitas = [
     {
       "nome": "Acarajé",
       "imagem":
       "https://www.receiteria.com.br/wp-content/uploads/acaraje-capa.png",
+      "tempo": "40 min",
+      "categoria": "Nordestina",
+      "favorito": false,
     },
     {
       "nome": "Tapioca",
       "imagem":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvNmfeftNURRHCIdF7-l0fc1nRIYxAFh2nw&s",
+      "tempo": "10 min",
+      "categoria": "Nordestina",
+      "favorito": false,
     },
     {
       "nome": "Cuscuz",
       "imagem":
       "https://listadereceitas.com/wp-content/uploads/2025/04/Receita-de-cuscuz-nordestino-simples-de-fazer-500x500.jpg",
+      "tempo": "20 min",
+      "categoria": "Nordestina",
+      "favorito": false,
     },
     {
       "nome": "Feijoada",
       "imagem":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRYmBoJQ3N90R6HuoSxGXrXMtvNBFZe-shA&s",
+      "tempo": "1h",
+      "categoria": "Nordestina",
+      "favorito": false,
     },
   ];
 
+
   int selectedIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +69,14 @@ class _TelaPerfilState extends State<TelaPerfil> {
       buildTelaPerfil(),
     ];
 
+
     return Scaffold(
       appBar: buildAppBar(),
       body: pages[selectedIndex],
       bottomNavigationBar: buildBottomNavBar(),
     );
   }
+
 
   Widget infoPerfil(
       String numero,
@@ -82,6 +101,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
       ],
     );
   }
+
 
   Widget buildTelaPerfil() {
     return SingleChildScrollView(
@@ -151,18 +171,22 @@ class _TelaPerfilState extends State<TelaPerfil> {
               children: [
                 Expanded(
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff100ea6),
+                      foregroundColor: Colors.white,
+                    ),
                     onPressed: () {},
                     child: Text(
-                      "Editar perfil",
-                      style: TextStyle(
-                        color: Color(0xff100ea6),
-                      ),
-                    ),
+                        "Editar perfil"),
                   ),
                 ),
                 SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff100ea6),
+                      foregroundColor: Colors.white,
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -172,11 +196,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                       );
                     },
                     child: Text(
-                      "Nova receita",
-                      style: TextStyle(
-                        color: Color(0xff100ea6),
-                      ),
-                    ),
+                        "Nova receita"),
                   ),
                 ),
               ],
@@ -237,6 +257,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                               return child;
                             }
 
+
                             return Container(
                               height: 220,
                               alignment: Alignment.center,
@@ -257,6 +278,31 @@ class _TelaPerfilState extends State<TelaPerfil> {
                           },
                         ),
                       ),
+
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              receitas[index]["favorito"]
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: receitas[index]["favorito"]
+                                  ? Colors.red
+                                  : Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                receitas[index]["favorito"] =
+                                !receitas[index]["favorito"];
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+
+
                       SizedBox(height: 10),
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -272,12 +318,39 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                 ),
                               ),
                               SizedBox(height: 5),
-                              Text(
-                                "Receita típica nordestina",
-                                style: TextStyle(
-                                  color: Color(0xff100ea6),
-                                ),
+
+
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timer, size: 16, color: Color(0xff100ea6)),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        receitas[index]["tempo"],
+                                        style: TextStyle(color: Color(0xff100ea6)),
+                                      ),
+                                    ],
+                                  ),
+
+
+                                  SizedBox(height: 5),
+
+
+                                  Row(
+                                    children: [
+                                      Icon(Icons.restaurant, size: 16, color: Color(0xff100ea6)),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        receitas[index]["categoria"],
+                                        style: TextStyle(color: Color(0xff100ea6)),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
+
                               SizedBox(height: 5),
                               Text(
                                 "Postado por Wade S. Gomez",
@@ -296,6 +369,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
       ),
     );
   }
+
 
   buildBottomNavBar() {
     return BottomNavigationBar(
@@ -321,6 +395,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
     );
   }
 
+
   PreferredSizeWidget buildAppBar() {
     if (selectedIndex == 0) {
       return AppBar(
@@ -333,6 +408,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
       );
     }
 
+
     if (selectedIndex == 1) {
       return AppBar(
         centerTitle: false,
@@ -343,6 +419,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
+
 
     if (selectedIndex == 2) {
       return AppBar(
@@ -355,6 +432,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
       );
     }
 
+
     if (selectedIndex == 3) {
       return AppBar(
         centerTitle: false,
@@ -365,6 +443,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
+
 
     return AppBar(
       centerTitle: false,

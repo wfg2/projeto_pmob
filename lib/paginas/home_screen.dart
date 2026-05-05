@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/paginas/pagina_pesquisar.dart';
 import 'package:projeto/paginas/pagina_explorar.dart';
 import 'package:projeto/paginas/pagina_categoria.dart';
 
@@ -24,7 +23,6 @@ class _HomePageState extends State<HomePage> {
         )
     ),
     TelaCategoria(),
-    TelaBuscar(),
     TelaExplorar(),
     Center(
         child: Text(
@@ -34,14 +32,6 @@ class _HomePageState extends State<HomePage> {
           ),
         )
     ),
-    Center(
-        child: Text(
-          'Perfil',
-          style: TextStyle(
-              fontSize: 32
-          ),
-        )
-    )
   ];
 
   @override
@@ -84,13 +74,6 @@ class _HomePageState extends State<HomePage> {
 
         BottomNavigationBarItem(
             icon: Icon(
-                Icons.search
-            ),
-            label: 'Buscar'
-        ),
-
-        BottomNavigationBarItem(
-            icon: Icon(
                 Icons.restaurant
             ),
             label: 'Explorar'
@@ -104,10 +87,10 @@ class _HomePageState extends State<HomePage> {
         ),
 
         BottomNavigationBarItem(
-            icon: Icon(
-                Icons.person
-            ),
-            label: 'Perfil'
+          icon: Icon(
+            Icons.person
+          ),
+          label: 'Perfil'
         )
       ],
     );

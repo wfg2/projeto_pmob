@@ -14,7 +14,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFc5cae9),
+        //backgroundColor: Color(0xFFc5cae9),
         appBar: AppBar(
             backgroundColor: Color(0xFF002566),
 
@@ -55,27 +55,27 @@ class _TelaExplorarState extends State<TelaExplorar> {
 
                       buildReceitas(
                           url: 'https://conteudo.imguol.com.br/c/entretenimento/ad/2020/08/04/molhos-e-massas-diferentes-podem-dar-mais-variedade-ao-seu-cardapio-1596561195532_v2_4x3.jpg',
-                          nome: 'Macarrão'
+                          nome: 'Lasanha'
                       ),
 
                       buildReceitas(
                           url: 'https://conteudo.imguol.com.br/c/entretenimento/ad/2020/08/04/molhos-e-massas-diferentes-podem-dar-mais-variedade-ao-seu-cardapio-1596561195532_v2_4x3.jpg',
-                          nome: 'Macarrão'
+                          nome: 'Strogonoff'
                       ),
 
                       buildReceitas(
                           url: 'https://conteudo.imguol.com.br/c/entretenimento/ad/2020/08/04/molhos-e-massas-diferentes-podem-dar-mais-variedade-ao-seu-cardapio-1596561195532_v2_4x3.jpg',
-                          nome: 'Macarrão'
+                          nome: 'Escondinho'
                       ),
 
                       buildReceitas(
                           url: 'https://conteudo.imguol.com.br/c/entretenimento/ad/2020/08/04/molhos-e-massas-diferentes-podem-dar-mais-variedade-ao-seu-cardapio-1596561195532_v2_4x3.jpg',
-                          nome: 'Macarrão'
+                          nome: 'Torta salgada'
                       ),
 
                       buildReceitas(
                           url: 'https://conteudo.imguol.com.br/c/entretenimento/ad/2020/08/04/molhos-e-massas-diferentes-podem-dar-mais-variedade-ao-seu-cardapio-1596561195532_v2_4x3.jpg',
-                          nome: 'Macarrão'
+                          nome: 'Frango assado'
                       ),
                     ],
                   ),
@@ -245,7 +245,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
                   ),
                 ),
                 buildLinha(),
-                buildSecoes(secao: 'Resceitas da vovó:'),
+                buildSecoes(secao: 'Receitas da vovó:'),
                 SizedBox(
                   height: 200.0,
                   child: ListView(
@@ -295,21 +295,14 @@ class _TelaExplorarState extends State<TelaExplorar> {
     required String secao
   }){
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(12.0),
       child: Text(
         secao,
         style: TextStyle(
             color: Color(0xFF002566),
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
-            fontFamily: 'Oswald',
-            shadows: [
-              Shadow(
-                  color: Color(0xFF747fc6),
-                  offset: Offset(3, 3),
-                  blurRadius: 5.0
-              )
-            ]
+            fontFamily: 'Oswald'
         ),
       ),
     );
@@ -342,7 +335,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
               width: 150.0,
 
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
+                borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
                     color: Color(0xFF002566),
                     width: 3.0
@@ -350,7 +343,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
               ),
 
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(16.0),
                 child:
                 Image.network(
                   url,
@@ -360,15 +353,20 @@ class _TelaExplorarState extends State<TelaExplorar> {
               ),
             ),
 
-            Text(
-                nome,
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 25.0,
-                    color: Color(0xFF002566),
-                    fontWeight: FontWeight.bold
-                )
-            )
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0
+              ),
+              child: Text(
+                  nome,
+                  style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 22.0,
+                      color: Color(0xFF002566),
+                      fontWeight: FontWeight.bold
+                  )
+              ),
+            ),
           ],
         )
     );

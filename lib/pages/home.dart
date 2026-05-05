@@ -23,68 +23,54 @@ class _homeState extends State<home> {
       ),
       body: ListView(children: [
         buildContainer(
-            fotodeperfil:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nomeusuario: 'Maria',
-            dataehora: '21 de Abr, 15:42',
-            fotopost:
-            'https://receitatodahora.com.br/wp-content/uploads/2025/01/lasanha-de-frango-cremosa-0701-1024x683.jpg.webp',
-            legenda:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            likes: '198',
-            comentarios: '34',
-            compartilhamentos: '25', nomereceita: 'Lasanha de Frango',
-            temporeceita: 45,
-            nivelreceita: 'Fácil',
-            fotoreceita: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoYCWmSCVZZpjPxyhqaUHmdfB-rJYfMAbyUuUbh-UKmQ&s&ec=121657058'
+            fotodeperfil: 'https://concertsinbrazil.com/wp-content/uploads/2024/05/image-13.png',
+            nomeusuario: 'Sofya Plotnikova',
+            dataehora: '22 de Mai, 09:00',
+            fotopost: 'https://upload.wikimedia.org/wikipedia/commons/d/df/Pelmeni_Russian.jpg',
+            legenda: 'Pelmeni feito com amor para aquecer o coração. 🇷🇺',
+            likes: '3.1k', comentarios: '95', compartilhamentos: '44',
+            nomereceita: 'Pelmeni', temporeceita: 70, nivelreceita: 'Difícil',
+            fotoreceita: 'https://s2-receitas.glbimg.com/ZCYRb-UBLbCuCImCXlBG_Uvu_bA=/0x0:1920x1080/640x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2025/R/v/Pdk98iRcqk1ndCsA0KBQ/harumaki-em-casa-receitas-faceis-para-voce-fazer-seu-rolinho-primavera.jpg'
         ),
         buildContainer(
-            fotodeperfil:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nomeusuario: 'Maria',
-            dataehora: '21 de Abr, 15:42',
-            fotopost:
-            'https://receitatodahora.com.br/wp-content/uploads/2025/01/lasanha-de-frango-cremosa-0701-1024x683.jpg.webp',
-            legenda:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            likes: '198',
-            comentarios: '34',
-            compartilhamentos: '25', nomereceita: 'Lasanha de Frango',
-            temporeceita: 45,
-            nivelreceita: 'Fácil',
-            fotoreceita: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoYCWmSCVZZpjPxyhqaUHmdfB-rJYfMAbyUuUbh-UKmQ&s&ec=121657058'
+            fotodeperfil: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Ariel_Tsang_20221210.jpg',
+            nomeusuario: 'Ariel Tsang',
+            dataehora: '23 de Mai, 08:30',
+            fotopost: 'https://moinhoglobo.com.br/wp-content/uploads/2021/09/rolinho-primavera.jpg',
+            legenda: 'Rolinhos Primavera crocantes. 🇭🇰',
+            likes: '2.5k', comentarios: '67', compartilhamentos: '30',
+            nomereceita: 'Rolinho Primavera', temporeceita: 45, nivelreceita: 'Médio',
+            fotoreceita: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?w=300'
         ),
         buildContainer(
-            fotodeperfil:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nomeusuario: 'Maria',
-            dataehora: '21 de Abr, 15:42',
-            fotopost:
-            'https://receitatodahora.com.br/wp-content/uploads/2025/01/lasanha-de-frango-cremosa-0701-1024x683.jpg.webp',
-            legenda:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            likes: '198',
-            comentarios: '34',
-            compartilhamentos: '25', nomereceita: 'Lasanha de Frango',
-            temporeceita: 45,
-            nivelreceita: 'Fácil',
-            fotoreceita: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoYCWmSCVZZpjPxyhqaUHmdfB-rJYfMAbyUuUbh-UKmQ&s&ec=121657058'
+            fotodeperfil: 'https://portalpopline.com.br/wp-content/uploads/2025/05/now-united-jayna.jpg',
+            nomeusuario: 'Jayna Hughes',
+            dataehora: '23 de Mai, 12:45',
+            fotopost: 'https://deliciouslyrushed.com/wp-content/uploads/2023/11/chicken-adobo-feature-image.jpg',
+            legenda: 'Filipino Chicken Adobo. Melhor prato do mundo! 🇵🇭',
+            likes: '6.7k', comentarios: '320', compartilhamentos: '140',
+            nomereceita: 'Adobo', temporeceita: 55, nivelreceita: 'Médio',
+            fotoreceita: 'https://deliciouslyrushed.com/wp-content/uploads/2023/11/chicken-adobo-feature-image.jpg'
         ),
         buildContainer(
-            fotodeperfil:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nomeusuario: 'Maria',
-            dataehora: '21 de Abr, 15:42',
-            fotopost:
-            'https://receitatodahora.com.br/wp-content/uploads/2025/01/lasanha-de-frango-cremosa-0701-1024x683.jpg.webp',
-            legenda:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            likes: '198',
-            comentarios: '34',
-            compartilhamentos: '25', nomereceita: 'Lasanha de Frango',
-            temporeceita: 45,
-            nivelreceita: 'Fácil',
-            fotoreceita: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoYCWmSCVZZpjPxyhqaUHmdfB-rJYfMAbyUuUbh-UKmQ&s&ec=121657058'
+            fotodeperfil: 'https://cadernopop.com.br/wp-content/uploads/2024/12/heyoon-1024x576.webp',
+            nomeusuario: 'Heyoon Jeong',
+            dataehora: '24 de Mai, 10:15',
+            fotopost: 'https://www.sabornamesa.com.br/media/k2/items/cache/b96b0675996074d026b87e19f230d72d_XL.jpg',
+            legenda: 'Apimentado e delicioso: Tteokbokki! 🇰🇷',
+            likes: '8.1k', comentarios: '450', compartilhamentos: '300',
+            nomereceita: 'Tteokbokki', temporeceita: 30, nivelreceita: 'Médio',
+            fotoreceita: 'https://www.sabornamesa.com.br/media/k2/items/cache/b96b0675996074d026b87e19f230d72d_XL.jpg'
+        ),
+        buildContainer(
+            fotodeperfil: 'https://pt.quizur.com/_image?href=https%3A%2F%2Fimg.quizur.com%2Ff%2Fimg5f12e302b93a64.04628293.jpg%3FlastEdited%3D1595073305&w=600&h=600&f=webp',
+            nomeusuario: 'Joalin Loukamaa',
+            dataehora: '24 de Mai, 16:00',
+            fotopost: 'https://www.valio.fi/cdn-cgi/image/format=auto/https://cdn-wp.valio.fi/valio-fi/2023/04/37674-korvapuustit-1300x867.jpeg',
+            legenda: 'Korvapuusti! Os melhores pãezinhos de canela. 🇫🇮',
+            likes: '5.9k', comentarios: '200', compartilhamentos: '100',
+            nomereceita: 'Korvapuusti', temporeceita: 90, nivelreceita: 'Médio',
+            fotoreceita: 'https://www.valio.fi/cdn-cgi/image/format=auto/https://cdn-wp.valio.fi/valio-fi/2023/04/37674-korvapuustit-1300x867.jpeg'
         ),
       ]),
     );
@@ -104,11 +90,12 @@ class _homeState extends State<home> {
         // receita
         required String nomereceita,
         required int temporeceita,
-        required nivelreceita,
+        required String nivelreceita,
         required String fotoreceita
       }) {
     return Container(
-      margin: const EdgeInsets.all(16),
+
+      margin: EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -118,13 +105,13 @@ class _homeState extends State<home> {
               buildcircleAvatar(fotodeperfil),
               SizedBox(width: 12),
               Text(nomeusuario,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Montserrat',
-                      color: Color(0xFF002566))),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Montserrat',
+                    color: Color(0xFF002566))),
               Spacer(flex: 2),
               Text(dataehora,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 12, fontFamily: 'Montserrat-Regular'))
             ],
           ),
@@ -173,7 +160,7 @@ class _homeState extends State<home> {
           ),
           SizedBox(height: 10),
           Text(legenda,
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 14, fontFamily: 'Montserrat-Regular')),
           SizedBox(height: 12),
           buildContainerRecipe(nomereceita: nomereceita, temporeceita: temporeceita, nivelreceita: nivelreceita, fotoreceita: fotoreceita)
@@ -196,7 +183,7 @@ class _homeState extends State<home> {
   buildContainerRecipe ({
     required String nomereceita,
     required int temporeceita,
-    required nivelreceita,
+    required String nivelreceita,
     required String fotoreceita}){
     return GestureDetector(
       onTap: (){
@@ -223,7 +210,8 @@ class _homeState extends State<home> {
                     fit: BoxFit.cover),
               ),
             ),
-            Column(
+            Expanded(child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
@@ -234,7 +222,6 @@ class _homeState extends State<home> {
                       fontSize: 12),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
                       Icons.timer,
@@ -273,12 +260,16 @@ class _homeState extends State<home> {
                 )
               ],
             ),
-            SizedBox(width: 80,),
-            Text('Ver Receita',
-                style: TextStyle(
+            ),
+            Padding(padding: EdgeInsets.all(15),
+              child: Text('Ver Receita',
+                  style: TextStyle(
                     color: Color(0xFF002566),
                     fontFamily: 'Montserrat-Regular',
-                    fontSize: 12))
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold
+                  )),
+            )
           ]),
     ),);
   }

@@ -13,7 +13,12 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List pages = [
     home(),
-    detalhes(),
+    Center(
+      child: Text(
+        'buscar',
+        style: TextStyle(fontSize: 32),
+      ),
+    ),
     Center(
       child: Text(
         'explorar',
@@ -28,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     ),
     Center(
       child: Text(
-        'configurações',
+        'perfil',
         style: TextStyle(fontSize: 32),
       ),
     )

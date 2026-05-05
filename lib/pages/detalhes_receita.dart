@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/home.dart';
+import 'package:projeto/pages/home_screen.dart';
 
 class detalhes extends StatefulWidget {
   const detalhes({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _detalhesState extends State<detalhes> {
           leading:
           IconButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Icon(Icons.arrow_back_ios_new,
                 color: Colors.white,

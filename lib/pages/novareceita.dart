@@ -181,7 +181,7 @@ class _NovaReceitaState extends State<NovaReceita> {
 
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("Receita postada com sucesso!"),
+                      content: Text("A receita foi postada com sucesso!"),
                       backgroundColor: Colors.green,
                     ),
 

@@ -492,4 +492,3 @@ class _TelaPerfilState extends State<TelaPerfil> {
     );
   }
 }
-

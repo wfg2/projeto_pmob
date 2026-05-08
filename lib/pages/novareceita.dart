@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
+
 class NovaReceita extends StatefulWidget {
   const NovaReceita({Key? key}) : super(key: key);
+
 
   @override
   State<NovaReceita> createState() => _NovaReceitaState();
 }
 
+
 class _NovaReceitaState extends State<NovaReceita> {
   final Color corPrincipal = Color(0xff100ea6);
+
 
   TextEditingController nome = TextEditingController();
   TextEditingController tempo = TextEditingController();
@@ -16,7 +20,9 @@ class _NovaReceitaState extends State<NovaReceita> {
   TextEditingController descricao = TextEditingController();
   TextEditingController foto = TextEditingController();
 
+
   String tipo = "Nordestina";
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +58,7 @@ class _NovaReceitaState extends State<NovaReceita> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "Compartilhe sua receita! 🍴",
+                    "Compartilhe sua receita!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -141,18 +147,45 @@ class _NovaReceitaState extends State<NovaReceita> {
                   ),
                 ),
                 onPressed: () {
+                  if (nome.text.isEmpty ||
+                      tempo.text.isEmpty ||
+                      ingredientes.text.isEmpty ||
+                      descricao.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Preencha todos os campos!"),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                    return;
+                  }
+
+
+                  if (foto.text.isNotEmpty && !foto.text.startsWith('http')){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Coloque uma URL válida de imagem!"),
+                        backgroundColor: Colors.orange,
+                      ),
+                    );
+                    return;
+                  }
+
+
                   nome.clear();
                   tempo.clear();
                   ingredientes.clear();
                   descricao.clear();
                   foto.clear();
 
+
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(
-                        "Receita postada com sucesso!",
-                      ),
+                      content: Text("Receita postada com sucesso!"),
+                      backgroundColor: Colors.green,
                     ),
+
+
                   );
                 },
                 icon: Icon(Icons.upload, color: Colors.white),
@@ -171,6 +204,7 @@ class _NovaReceitaState extends State<NovaReceita> {
       ),
     );
   }
+
 
   Widget campoTexto({
     required TextEditingController controller,

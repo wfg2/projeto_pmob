@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:projeto/pages/novareceita.dart';
 
 
+
+
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({Key? key}) : super(key: key);
+
+
 
 
   @override
   State<TelaPerfil> createState() => _TelaPerfilState();
 }
+
+
 
 
 class _TelaPerfilState extends State<TelaPerfil> {
@@ -48,7 +54,11 @@ class _TelaPerfilState extends State<TelaPerfil> {
   ];
 
 
+
+
   int selectedIndex = 0;
+
+
 
 
   @override
@@ -70,12 +80,16 @@ class _TelaPerfilState extends State<TelaPerfil> {
     ];
 
 
+
+
     return Scaffold(
       appBar: buildAppBar(),
       body: pages[selectedIndex],
       bottomNavigationBar: buildBottomNavBar(),
     );
   }
+
+
 
 
   Widget infoPerfil(
@@ -101,6 +115,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
       ],
     );
   }
+
+
 
 
   Widget buildTelaPerfil() {
@@ -258,6 +274,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
                             }
 
 
+
+
                             return Container(
                               height: 220,
                               alignment: Alignment.center,
@@ -280,44 +298,46 @@ class _TelaPerfilState extends State<TelaPerfil> {
                       ),
 
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              receitas[index]["favorito"]
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: receitas[index]["favorito"]
-                                  ? Colors.red
-                                  : Colors.grey,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                receitas[index]["favorito"] =
-                                !receitas[index]["favorito"];
-                              });
-                            },
-                          ),
-                        ],
-                      ),
 
 
-                      SizedBox(height: 10),
+
+
+
+
                       Padding(
-                          padding: EdgeInsets.all(12),
+                          padding: EdgeInsets.all(10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                receitas[index]["nome"]!,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff100ea6),
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    receitas[index]["nome"]!,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xff100ea6),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      receitas[index]["favorito"]
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: receitas[index]["favorito"]
+                                          ? Colors.red
+                                          : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        receitas[index]["favorito"] =
+                                        !receitas[index]["favorito"];
+                                      });
+                                    },
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 5),
 
 
                               Column(
@@ -335,7 +355,11 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                   ),
 
 
+
+
                                   SizedBox(height: 5),
+
+
 
 
                                   Row(
@@ -350,6 +374,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                   )
                                 ],
                               ),
+
 
                               SizedBox(height: 5),
                               Text(
@@ -369,6 +394,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
       ),
     );
   }
+
+
 
 
   buildBottomNavBar() {
@@ -396,6 +423,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
   }
 
 
+
+
   PreferredSizeWidget buildAppBar() {
     if (selectedIndex == 0) {
       return AppBar(
@@ -407,6 +436,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
+
+
 
 
     if (selectedIndex == 1) {
@@ -421,6 +452,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
     }
 
 
+
+
     if (selectedIndex == 2) {
       return AppBar(
         centerTitle: false,
@@ -433,6 +466,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
     }
 
 
+
+
     if (selectedIndex == 3) {
       return AppBar(
         centerTitle: false,
@@ -443,6 +478,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
+
+
 
 
     return AppBar(

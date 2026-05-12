@@ -50,9 +50,7 @@ class _detalhesState extends State<detalhes> {
               fontSize: 25,
             ),
           ),
-          flexibleSpace: SizedBox(
-            width: 60,
-          ),
+          flexibleSpace: Spacer(flex: 1),
           actions: [
             IconButton(
                 onPressed: () {

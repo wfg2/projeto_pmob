@@ -32,6 +32,14 @@ class _HomePageState extends State<HomePage> {
           ),
         )
     ),
+    Center(
+      child: Text(
+        'Perfil',
+        style: TextStyle(
+          fontSize: 32
+        ),
+      ),
+    )
   ];
 
   @override

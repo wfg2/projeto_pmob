@@ -3,5 +3,5 @@ import 'package:projeto/Pages/TelaEditarPerfil.dart';
 import 'package:projeto/Pages/Tela_Favoritos.dart';
 
 void main() {
-  runApp(MaterialApp(home: TelaFavoritos()));
+  runApp(MaterialApp(home: TelaEditarPerfil()));
 }

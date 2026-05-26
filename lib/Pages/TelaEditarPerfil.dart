@@ -12,11 +12,12 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0927eb),
+        backgroundColor: Color(0xFF1800ad),
         leading: Icon(Icons.arrow_back_ios, color: Colors.white, size: 30,),
         title: Text('Editar Perfil', style: TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
       ),
+
       body: ListView(
     children: [
       SizedBox(height: 20),
@@ -60,6 +61,7 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
         ),
       ),
       ),
+
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: TextField(
@@ -82,6 +84,7 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
           ),
         ),
       ),
+
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: TextField(
@@ -105,6 +108,27 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
         ),
       ),
 
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: TextField(
+          style: TextStyle(color: Color(0xFF1800ad)),
+          decoration: InputDecoration(
+            labelText: "Gênero",
+            labelStyle: TextStyle(color: Color(0xFF1800ad)),
+            hintText: "Editar gênero",
+            hintStyle:  TextStyle(color: Color(0xFF303f9f)),
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Color(0xFF1800ad)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Color(0xFF1800ad),
+              ),
+            ),
+          ),
+        ),)
 
     ],
       ),

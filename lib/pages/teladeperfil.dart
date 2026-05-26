@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/novareceita.dart';
 
-
-
-
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({Key? key}) : super(key: key);
-
-
-
 
   @override
   State<TelaPerfil> createState() => _TelaPerfilState();
 }
-
-
-
-
 class _TelaPerfilState extends State<TelaPerfil> {
   final List<Map<String, dynamic>> receitas = [
     {
@@ -53,13 +43,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
     },
   ];
 
-
-
-
   int selectedIndex = 0;
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,18 +63,12 @@ class _TelaPerfilState extends State<TelaPerfil> {
       buildTelaPerfil(),
     ];
 
-
-
-
     return Scaffold(
       appBar: buildAppBar(),
       body: pages[selectedIndex],
       bottomNavigationBar: buildBottomNavBar(),
     );
   }
-
-
-
 
   Widget infoPerfil(
       String numero,
@@ -116,9 +94,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
     );
   }
 
-
-
-
   Widget buildTelaPerfil() {
     return SingleChildScrollView(
       child: Column(
@@ -128,7 +103,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
             child: Row(children: [
               CircleAvatar(
                 radius: 45,
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xff100ea6),
                 child: CircleAvatar(
                   radius: 42,
                   backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUc9Q9l6oB_B5YAST0rpkH1T3ndI3yq49saQ&s"),
@@ -273,9 +248,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
                               return child;
                             }
 
-
-
-
                             return Container(
                               height: 220,
                               alignment: Alignment.center,
@@ -296,13 +268,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
                           },
                         ),
                       ),
-
-
-
-
-
-
-
 
                       Padding(
                           padding: EdgeInsets.all(10),
@@ -339,7 +304,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                 ],
                               ),
 
-
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -354,13 +318,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                     ],
                                   ),
 
-
-
-
                                   SizedBox(height: 5),
-
-
-
 
                                   Row(
                                     children: [
@@ -374,7 +332,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
                                   )
                                 ],
                               ),
-
 
                               SizedBox(height: 5),
                               Text(
@@ -394,9 +351,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
       ),
     );
   }
-
-
-
 
   buildBottomNavBar() {
     return BottomNavigationBar(
@@ -422,9 +376,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
     );
   }
 
-
-
-
   PreferredSizeWidget buildAppBar() {
     if (selectedIndex == 0) {
       return AppBar(
@@ -437,9 +388,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
       );
     }
 
-
-
-
     if (selectedIndex == 1) {
       return AppBar(
         centerTitle: false,
@@ -450,9 +398,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
-
-
-
 
     if (selectedIndex == 2) {
       return AppBar(
@@ -465,9 +410,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
       );
     }
 
-
-
-
     if (selectedIndex == 3) {
       return AppBar(
         centerTitle: false,
@@ -478,9 +420,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
         backgroundColor: Color(0xff100ea6),
       );
     }
-
-
-
 
     return AppBar(
       centerTitle: false,

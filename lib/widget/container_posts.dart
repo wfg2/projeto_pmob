@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/classes/post_receita.dart';
+import 'package:projeto/domain/card_detalhes.dart';
+import 'package:projeto/domain/post_receita.dart';
 import 'package:projeto/pages/detalhes_receita.dart';
 import 'package:projeto/widget/container_detalhes.dart';
 import 'package:projeto/db/fake_database.dart';
@@ -86,7 +87,15 @@ class _ContainerPostsState extends State<ContainerPosts> {
               style: TextStyle(
                   fontSize: 14, fontFamily: 'Montserrat-Regular')),
           SizedBox(height: 12),
-          ContainerDetalhes(cardDetalhes: FakeDatabase.listaPosts[i])
+          ContainerDetalhes(cardDetalhes: CardDetalhes(
+              nomereceita: widget.postReceita.nomereceita,
+              temporeceita: widget.postReceita.temporeceita,
+              nivelreceita: widget.postReceita.nivelreceita,
+              fotoreceita: widget.postReceita.fotoreceita,
+              ingredientes: widget.postReceita.ingredientes,
+              preparo: widget.postReceita.preparo
+          )
+          )
         ],
       ),
     );

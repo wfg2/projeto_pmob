@@ -11,9 +11,12 @@ class PostReceita {
   String compartilhamentos;
   // receita
   String nomereceita;
-  int temporeceita;
+  String temporeceita;
   String nivelreceita;
   String fotoreceita;
+  // ingredientes e modo de preparo
+  List<String> ingredientes;
+  List<String> preparo;
 
   PostReceita({
   required this.fotodeperfil,
@@ -30,5 +33,8 @@ class PostReceita {
   required this.temporeceita,
   required this.nivelreceita,
   required this.fotoreceita,
+    //
+  required this.ingredientes,
+  required this.preparo
   });
 }

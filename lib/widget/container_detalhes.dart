@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/classes/card_detalhes.dart';
-import 'package:projeto/classes/post_receita.dart';
+import 'package:projeto/domain/card_detalhes.dart';
+import 'package:projeto/domain/post_receita.dart';
 import 'package:projeto/pages/detalhes_receita.dart';
+import 'package:projeto/domain/pagina_detalhes.dart';
 
 class ContainerDetalhes extends StatefulWidget {
   CardDetalhes cardDetalhes;
-  ContainerDetalhes({super.key, required this.cardDetalhes})
+  ContainerDetalhes({super.key, required this.cardDetalhes});
 
   @override
   State<ContainerDetalhes> createState() => _ContainerDetalhesState();
@@ -15,11 +16,18 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         setState(() {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => detalhes()));
+              context, MaterialPageRoute(builder: (context) => detalhes(paginaDetalhes: PaginaDetalhes(
+              ingredientes: widget.cardDetalhes.ingredientes,
+              preparo: widget.cardDetalhes.preparo,
+              nomereceita: widget.cardDetalhes.nomereceita,
+              temporeceita: widget.cardDetalhes.temporeceita,
+              nivelreceita: widget.cardDetalhes.nivelreceita,
+              fotoreceita: widget.cardDetalhes.fotoreceita)))
+          );
         });
       },
       child: Container(
@@ -103,6 +111,6 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
               )
             ]),
       ),
-    );;
+    );
   }
 }

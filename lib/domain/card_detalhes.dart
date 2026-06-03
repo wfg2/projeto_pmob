@@ -1,15 +1,20 @@
-import 'package:projeto/classes/post_receita.dart';
+import 'package:projeto/domain/card_detalhes.dart';
 
 class CardDetalhes {
   String nomereceita;
-  int temporeceita;
+  String temporeceita;
   String nivelreceita;
   String fotoreceita;
+  List<String> ingredientes;
+  List<String> preparo;
+
 
   CardDetalhes({
     required String this.nomereceita,
-    required int this.temporeceita,
+    required String this.temporeceita,
     required String this.nivelreceita,
     required String this.fotoreceita,
+    required this.ingredientes,
+    required this.preparo,
   });
 }

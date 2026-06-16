@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/db/fake_database.dart';
+import 'package:projeto/db/db_helper.dart';
 import 'package:projeto/widget/container_favoritos.dart';
 
 class TelaFavoritos extends StatefulWidget {
@@ -25,9 +25,9 @@ class _TelaFavoritosState extends State<TelaFavoritos> {
       ),
 
       body: ListView.builder(
-        itemCount: FakeDatabase.ListaFavoritos.length,
+        itemCount: ListaFavoritos.length,
         itemBuilder: (context, i){
-          return ContainerFavoritos(receitafavorita: FakeDatabase.ListaFavoritos[i]);
+          return ContainerFavoritos(receitafavorita: db_helper.ListaFavoritos[i]);
         },
       ),
         bottomNavigationBar: buildBottomNavBar(),

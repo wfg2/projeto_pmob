@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/databases/database.dart';
-import 'package:projeto/databases/database.dart';
+import 'package:projeto/databases/categoriaDao.dart';
+import 'package:projeto/domain/categoria.dart';
 import 'package:projeto/widget/container_categoria.dart';
 
 // cor padrão: 0xFF002566
@@ -15,6 +15,20 @@ class TelaCategoria extends StatefulWidget {
 }
 
 class _TelaCategoriaState extends State<TelaCategoria> {
+
+  List<Categoria> listaCategorias = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listaCategorias = await CategoriaDao().listarCategorias();
+    await Future.delayed(Duration(seconds: 0));
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +49,9 @@ class _TelaCategoriaState extends State<TelaCategoria> {
       ),
 
       body: ListView.builder(
-        itemCount: Database.listaCategorias.length,
+        itemCount: listaCategorias.length,
         itemBuilder: (context, i) {
-          return ContainerCategoria(categoria: Database.listaCategorias[i]);
+          return ContainerCategoria(categoria: listaCategorias[i]);
         },
       )
     );

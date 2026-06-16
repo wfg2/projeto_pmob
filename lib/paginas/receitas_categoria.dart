@@ -26,7 +26,27 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
       ),
       body: ListView(
         children: [
+          Stack(
+            children: [
+              Image.network(categoria.urlImagem),
+              ]
+          ),
 
+          SizedBox(height: 24),
+          Column(
+            children: [
+              Text(
+                categoria.categoria,
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Apartamento na Holanda',
+              ),
+              Text(
+                '2 camas e banheiro privativo',
+              ),
+            ],
+          ),
         ],
       )
     );

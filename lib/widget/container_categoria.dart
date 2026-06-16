@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/categoria.dart';
-import 'package:projeto/databases/database.dart';
 import 'package:projeto/paginas/receitas_categoria.dart';
 
 class ContainerCategoria extends StatefulWidget {
@@ -14,8 +13,6 @@ class ContainerCategoria extends StatefulWidget {
 
 class _ContainerCategoriaState extends State<ContainerCategoria> {
 
-  Categoria get categoria => widget.categoria;
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -24,7 +21,7 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return ReceitasCategoria(categoria: categoria);
+              return ReceitasCategoria(categoria: widget.categoria);
             }
           ),
         );
@@ -53,7 +50,7 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
               borderRadius: BorderRadiusGeometry.circular(10.0),
               child:
               Image.network(
-                categoria.urlImagem,
+                widget.categoria.urlImagem,
                 height: 180,
                 width: 380,
                 fit: BoxFit.cover,
@@ -63,7 +60,7 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
             Positioned.fill(
                 child: Center(
                   child: Text(
-                    categoria.categoria,
+                    widget.categoria.categoria,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 35.0,
@@ -88,4 +85,6 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
       ),
     );
   }
+
+  onTapContainer() {}
 }

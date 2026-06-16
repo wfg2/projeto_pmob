@@ -1,4 +1,3 @@
-
 import 'package:projeto/domain/post_receita.dart';
 
 class FakeDatabase {

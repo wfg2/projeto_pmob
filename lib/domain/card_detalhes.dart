@@ -1,5 +1,3 @@
-import 'package:projeto/domain/card_detalhes.dart';
-
 class CardDetalhes {
   String nomereceita;
   String temporeceita;

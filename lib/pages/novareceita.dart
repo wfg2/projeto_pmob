@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
-
 class NovaReceita extends StatefulWidget {
   const NovaReceita({Key? key}) : super(key: key);
-
 
   @override
   State<NovaReceita> createState() => _NovaReceitaState();
 }
 
-
 class _NovaReceitaState extends State<NovaReceita> {
   final Color corPrincipal = Color(0xff100ea6);
-
 
   TextEditingController nome = TextEditingController();
   TextEditingController tempo = TextEditingController();
@@ -20,9 +16,7 @@ class _NovaReceitaState extends State<NovaReceita> {
   TextEditingController descricao = TextEditingController();
   TextEditingController foto = TextEditingController();
 
-
   String tipo = "Nordestina";
-
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +154,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                     return;
                   }
 
-
                   if (foto.text.isNotEmpty && !foto.text.startsWith('http')){
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -170,7 +163,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                     );
                     return;
                   }
-
 
                   nome.clear();
                   tempo.clear();
@@ -184,7 +176,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                       content: Text("A receita foi postada com sucesso!"),
                       backgroundColor: Colors.green,
                     ),
-
 
                   );
                 },
@@ -204,7 +195,6 @@ class _NovaReceitaState extends State<NovaReceita> {
       ),
     );
   }
-
 
   Widget campoTexto({
     required TextEditingController controller,
@@ -231,4 +221,3 @@ class _NovaReceitaState extends State<NovaReceita> {
     );
   }
 }
-

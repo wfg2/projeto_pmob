@@ -3,9 +3,6 @@ import 'package:projeto/databases/categoriaDao.dart';
 import 'package:projeto/domain/categoria.dart';
 import 'package:projeto/widget/container_categoria.dart';
 
-// cor padrão: 0xFF002566
-// cor fundo: 0xFFc5cae9
-
 class TelaCategoria extends StatefulWidget {
 
   const TelaCategoria({super.key});

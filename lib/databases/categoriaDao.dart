@@ -9,6 +9,7 @@ class CategoriaDao {
     var result = await db.rawQuery('SELECT * FROM CATEGORIA');
 
     List<Categoria> lista = [];
+
     for (var json in result) {
       Categoria categoria = Categoria.fromJson(json);
       lista.add(categoria);

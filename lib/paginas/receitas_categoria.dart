@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/databases/receitasCategoriaDAO.dart';
 import 'package:projeto/domain/categoria.dart';
+import 'package:projeto/widget/container_receitas_categorias.dart';
+import 'package:projeto/domain/receitasCategorias.dart';
 
 class ReceitasCategoria extends StatefulWidget {
   Categoria categoria;
@@ -11,44 +14,49 @@ class ReceitasCategoria extends StatefulWidget {
 }
 
 class _ReceitasCategoriaState extends State<ReceitasCategoria> {
-  Categoria get categoria => widget.categoria;
+
+  List<Receitascategorias> listareceitascategoria = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listareceitascategoria =
+    await Receitascategoriadao().listarReceitascategorias(widget.categoria.id ?? 0);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF002566),
-        leading: IconButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back, color: Colors.white)
+        appBar: AppBar(
+          backgroundColor: Color(0xFF002566),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back, color: Colors.white)
+          ),
+          title: Text(
+            widget.categoria.categoria,
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Allison',
+                fontSize: 70,
+                fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
+        body: ListView.builder(
+          itemCount: listareceitascategoria.length,
+          itemBuilder: (context, i) {
+            return ContainerReceitasCategorias(
+                receitasCategorias: listareceitascategoria[i]);
+          },
         )
-      ),
-      body: ListView(
-        children: [
-          Stack(
-            children: [
-              Image.network(categoria.urlImagem),
-              ]
-          ),
-
-          SizedBox(height: 24),
-          Column(
-            children: [
-              Text(
-                categoria.categoria,
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Apartamento na Holanda',
-              ),
-              Text(
-                '2 camas e banheiro privativo',
-              ),
-            ],
-          ),
-        ],
-      )
     );
   }
 }

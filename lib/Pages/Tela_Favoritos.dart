@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/db/favoritos_dao.dart';
 import 'package:projeto/db/db_helper.dart';
+import 'package:projeto/domain/receitaFavorita.dart';
 import 'package:projeto/widget/container_favoritos.dart';
 
 class TelaFavoritos extends StatefulWidget {
@@ -13,6 +15,20 @@ class _TelaFavoritosState extends State<TelaFavoritos> {
 
   int selectedIndex = 3;
 
+  List<ReceitaFavorita> listaReceitasFavoritas =[];
+
+  @override
+  void  initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async{
+    listaReceitasFavoritas = await FavoritosDao().listarReceitasFavoritas();
+    await Future.delayed(Duration(seconds: 0));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +41,9 @@ class _TelaFavoritosState extends State<TelaFavoritos> {
       ),
 
       body: ListView.builder(
-        itemCount: ListaFavoritos.length,
+        itemCount: listaReceitasFavoritas.length,
         itemBuilder: (context, i){
-          return ContainerFavoritos(receitafavorita: db_helper.ListaFavoritos[i]);
+          return ContainerFavoritos(receitafavorita: listaReceitasFavoritas[i]);
         },
       ),
         bottomNavigationBar: buildBottomNavBar(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto/domain/receitaFavorita.dart';
 
 class ContainerFavoritos extends StatefulWidget {
-  receitaFavorita receitafavorita;
+  ReceitaFavorita receitafavorita;
   ContainerFavoritos({super.key, required this.receitafavorita});
 
   @override

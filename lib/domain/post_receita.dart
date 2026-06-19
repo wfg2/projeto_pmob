@@ -1,22 +1,22 @@
 class PostReceita {
   // perfil
-  String fotodeperfil;
-  String nomeusuario;
-  String dataehora;
+  late String fotodeperfil;
+  late String nomeusuario;
+  late String dataehora;
   // post
-  String fotopost;
-  String legenda;
-  String likes;
-  String comentarios;
-  String compartilhamentos;
+  late String fotopost;
+  late String legenda;
+  late String likes;
+  late String comentarios;
+  late String compartilhamentos;
   // receita
-  String nomereceita;
-  String temporeceita;
-  String nivelreceita;
-  String fotoreceita;
-  // ingredientes e modo de preparo
-  List<String> ingredientes;
-  List<String> preparo;
+  late String nomereceita;
+  late String temporeceita;
+  late String nivelreceita;
+  late String fotoreceita;
+
+  late List<String> ingredientes;
+  late List<String> preparo;
 
   PostReceita({
   required this.fotodeperfil,
@@ -33,8 +33,28 @@ class PostReceita {
   required this.temporeceita,
   required this.nivelreceita,
   required this.fotoreceita,
-    //
+
   required this.ingredientes,
   required this.preparo
   });
+
+  PostReceita.fromJson(Map<String, dynamic> json){
+    fotodeperfil = (json['fotodeperfil']);
+    nomeusuario = (json['nomeusuario']);
+    dataehora = (json['dataehora']);
+
+    fotopost = (json['fotopost']);
+    legenda = (json['legenda']);
+    likes = (json['likes']);
+    comentarios = (json['comentarios']);
+    compartilhamentos = (json['compartilhamentos']);
+
+    nomereceita = (json['nomereceita']);
+    temporeceita = (json['temporeceita']);
+    nivelreceita = (json['nivelreceita']);
+    fotoreceita = (json['fotoreceita']);
+
+    ingredientes = (json['ingredientes']);
+    preparo = (json['preparo']);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/pages/detalhes_receita.dart';
-import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/db/fake_database.dart';
+import 'package:projeto/db/PostReceitaDAO.dart';
+import 'package:projeto/domain/post_receita.dart';
 import 'package:projeto/widget/container_posts.dart';
 
 class home extends StatefulWidget {
@@ -12,6 +11,23 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  // Lista de Propriedades inicia vazia
+  List<PostReceita> listaPosts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // É necessário pois o initState não permite parar a tela (uso do await)
+    loadData();
+  }
+
+  // Carregar os dados do Banco de Dados
+  loadData() async {
+    listaPosts = await PostReceitaDao().listarPostReceitas();
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +40,9 @@ class _homeState extends State<home> {
                 fontFamily: 'Allison', color: Colors.white, fontSize: 40)),
       ),
       body: ListView.builder(
-          itemCount: FakeDatabase.listaPosts.length,
+          itemCount: listaPosts.length,
           itemBuilder: (context, i){
-            return ContainerPosts(postReceita: FakeDatabase.listaPosts[i]);
+            return ContainerPosts(postReceita: listaPosts[i]);
           })
     );
   }

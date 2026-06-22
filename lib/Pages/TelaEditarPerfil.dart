@@ -92,7 +92,7 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
           decoration: InputDecoration(
             labelText: "Bio",
             labelStyle: TextStyle(color: Color(0xFF1800ad)),
-            hintText: "Editar bio",
+            hintText: "Editar Bio",
             hintStyle: TextStyle(color: Color(0xFF303f9f)),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             enabledBorder: OutlineInputBorder(

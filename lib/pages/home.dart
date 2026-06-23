@@ -11,20 +11,16 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  // Lista de Propriedades inicia vazia
   List<PostReceita> listaPosts = [];
 
   @override
   void initState() {
     super.initState();
-    // É necessário pois o initState não permite parar a tela (uso do await)
     loadData();
   }
 
-  // Carregar os dados do Banco de Dados
   loadData() async {
     listaPosts = await PostReceitaDao().listarPostReceitas();
-    await Future.delayed(Duration(seconds: 2));
     setState(() {});
   }
 

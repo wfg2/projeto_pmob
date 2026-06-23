@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/pages/home.dart';
-import 'package:projeto/pages/home_screen.dart';
 import 'package:projeto/domain/pagina_detalhes.dart';
-import 'package:projeto/db/fake_database.dart';
 
 class detalhes extends StatefulWidget {
   PaginaDetalhes paginaDetalhes;

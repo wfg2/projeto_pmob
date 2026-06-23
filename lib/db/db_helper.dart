@@ -34,8 +34,6 @@ class DBHelper {
       )
     ''';
     await db.execute(sql);
-    // Separador usado para unir os itens
-    const String sep = '|||';
 
     // Post 1 – Pelmeni
     sql = '''

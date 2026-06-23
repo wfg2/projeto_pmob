@@ -39,22 +39,22 @@ class PostReceita {
   });
 
   PostReceita.fromJson(Map<String, dynamic> json){
-    fotodeperfil = (json['fotodeperfil']);
-    nomeusuario = (json['nomeusuario']);
-    dataehora = (json['dataehora']);
+    fotodeperfil = json['fotodeperfil'];
+    nomeusuario = json['nomeusuario'];
+    dataehora = json['dataehora'];
 
-    fotopost = (json['fotopost']);
-    legenda = (json['legenda']);
-    likes = (json['likes']);
-    comentarios = (json['comentarios']);
-    compartilhamentos = (json['compartilhamentos']);
+    fotopost = json['fotopost'];
+    legenda = json['legenda'];
+    likes = json['likes'];
+    comentarios = json['comentarios'];
+    compartilhamentos = json['compartilhamentos'];
 
-    nomereceita = (json['nomereceita']);
-    temporeceita = (json['temporeceita']);
-    nivelreceita = (json['nivelreceita']);
-    fotoreceita = (json['fotoreceita']);
+    nomereceita = json['nomereceita'];
+    temporeceita = json['temporeceita'];
+    nivelreceita = json['nivelreceita'];
+    fotoreceita = json['fotoreceita'];
 
-    ingredientes = (json['ingredientes']);
-    preparo = (json['preparo']);
+    ingredientes = (json['ingredientes'] as String?)?.split('|||') ?? [];
+    preparo = (json['preparo'] as String?)?.split('|||') ?? [];
   }
 }

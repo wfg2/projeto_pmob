@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/card_detalhes.dart';
 import 'package:projeto/domain/post_receita.dart';
-import 'package:projeto/pages/detalhes_receita.dart';
 import 'package:projeto/widget/container_detalhes.dart';
-import 'package:projeto/db/fake_database.dart';
 
 class ContainerPosts extends StatefulWidget {
   PostReceita postReceita;

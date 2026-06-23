@@ -1,10 +1,10 @@
 class Categoria {
-  late int? id;
+  late int id;
   late String urlImagem;
   late String categoria;
 
   Categoria ({
-    this.id,
+    required this.id,
     required this.urlImagem,
     required this.categoria,
   });

@@ -33,13 +33,13 @@ class _TelaCategoriaState extends State<TelaCategoria> {
       backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: Color(0xFF002566),
-          leading: Icon(Icons.fastfood, color: Colors.white, size: 40,),
+          leading: Icon(Icons.fastfood, color: Colors.white, size: 30,),
           title: Text(
             'Categorias',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Allison',
-              fontSize: 70,
+              fontSize: 50,
               fontWeight: FontWeight.bold
             ),
           )

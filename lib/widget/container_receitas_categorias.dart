@@ -16,7 +16,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
       child: Container(
-          height: 230,
+          height: 300,
           width: 175.0,
 
           decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                   ),
                   child: Image.network(
                     widget.receitasCategorias.urlImagem,
-                    height: 150,
+                    height: 180,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -57,7 +57,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
 
 
                 Padding(
-                  padding: EdgeInsets.all(12),
+                  padding: EdgeInsets.only(left: 12, top: 12, right: 12, bottom: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -66,7 +66,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                             widget.receitasCategorias.receita,
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                fontSize: 20.0,
+                                fontSize: 18.0,
                                 color: Color(0xFF002566),
                                 fontWeight: FontWeight.bold
                             )
@@ -81,18 +81,42 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0, bottom: 12.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  padding: EdgeInsets.only(left: 12.0, bottom: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                          'Por: ${widget.receitasCategorias.user}',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 16.0,
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.timer,
                             color: Color(0xFF002566),
-                          )
+                            size: 20,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            widget.receitasCategorias.timer,
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 14.0,
+                              color: Color(0xFF002566),
+                            )
+                          ),
+                        ],
                       ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Text(
+                              'Postado por: ${widget.receitasCategorias.user}',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 14.0,
+                                  color: Color(0xFF002566),
+                                  fontWeight: FontWeight.bold
+                              )
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),

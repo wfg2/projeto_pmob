@@ -1,6 +1,7 @@
 class Receitascategorias {
   late String urlImagem;
   late String receita;
+  late String timer;
   late String user;
 
   Receitascategorias({
@@ -12,6 +13,7 @@ class Receitascategorias {
   Receitascategorias.fromJson(Map<String, dynamic> json) {
     urlImagem = json['urlImagem'];
     receita = json['receita'];
+    timer = json['timer'];
     user = json['user'];
   }
 }

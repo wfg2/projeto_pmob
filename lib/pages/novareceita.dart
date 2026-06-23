@@ -8,7 +8,7 @@ class NovaReceita extends StatefulWidget {
 }
 
 class _NovaReceitaState extends State<NovaReceita> {
-  final Color corPrincipal = Color(0xff100ea6);
+  Color corPrincipal = Color(0xff100ea6);
 
   TextEditingController nome = TextEditingController();
   TextEditingController tempo = TextEditingController();

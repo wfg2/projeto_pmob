@@ -95,7 +95,7 @@ class _ReceitasPropState extends State<ReceitasProp> {
                         children: [
                           Icon(Icons.restaurant, size: 16,
                               color: Color(0xff100ea6)),
-                          SizedBox(height: 5),
+                          SizedBox(width: 5),
                           Text(
                             widget.propReceitas.categoria,
                             style: TextStyle(color: Color(0xff100ea6)),
@@ -110,7 +110,8 @@ class _ReceitasPropState extends State<ReceitasProp> {
                           fontWeight: FontWeight.w500, color: Color(0xff100ea6))
                   )
                 ],
-              ))
+              )
+          )
         ],
       ),
     );

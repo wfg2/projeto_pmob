@@ -22,12 +22,8 @@ class _NovaReceitaState extends State<NovaReceita> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Nova receita",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Text("Nova receita",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
         ),
         backgroundColor: Color(0xff100ea6),
       ),
@@ -39,25 +35,14 @@ class _NovaReceitaState extends State<NovaReceita> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: corPrincipal,
-                borderRadius: BorderRadius.circular(16),
-              ),
+              decoration: BoxDecoration(color: corPrincipal, borderRadius: BorderRadius.circular(16)),
               child: Column(
                 children: [
-                  Icon(
-                    Icons.restaurant_menu,
-                    size: 60,
-                    color: Colors.white,
+                  Icon(Icons.restaurant_menu, size: 60, color: Colors.white,
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    "Compartilhe sua receita!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Text("Compartilhe sua receita!", textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -148,7 +133,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Preencha todos os campos!"),
-                        backgroundColor: Colors.red,
                       ),
                     );
                     return;
@@ -158,7 +142,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Coloque uma URL válida de imagem!"),
-                        backgroundColor: Colors.orange,
                       ),
                     );
                     return;
@@ -173,7 +156,6 @@ class _NovaReceitaState extends State<NovaReceita> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("A receita foi postada com sucesso!"),
-                      backgroundColor: Colors.green,
                     ),
 
                   );

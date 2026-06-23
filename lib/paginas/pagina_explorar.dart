@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-// cor padrão: 0xFF002566
-// cor fundo: 0xFFc5cae9
-
 class TelaExplorar extends StatefulWidget {
   const TelaExplorar({super.key});
 
@@ -14,7 +11,6 @@ class _TelaExplorarState extends State<TelaExplorar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor: Color(0xFFc5cae9),
         appBar: AppBar(
             backgroundColor: Color(0xFF002566),
             title: Padding(

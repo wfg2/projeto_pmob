@@ -64,11 +64,11 @@ class DbHelper {
     // TABELA RECEITAS: --------------------------------------------------------------------------
     // Massas
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://upload.wikimedia.org/wikipedia/commons/8/86/Ravioli_di_Faraona.JPG', 'Ravioli de Faraona', 'Isabela F.', 1);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://upload.wikimedia.org/wikipedia/commons/8/86/Ravioli_di_Faraona.JPG', 'Ravioli de Faraona', 'Isabela Ferreira', 1);";
     await db.execute(sql);
 
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2014/01/lasanha-bolonhesa-na-pressao.jpg', 'Lasanha Bolonhesa', 'Rayanne V.', 1);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2014/01/lasanha-bolonhesa-na-pressao.jpg', 'Lasanha Bolonhesa', 'Rayanne Vitória', 1);";
     await db.execute(sql);
 
     sql =
@@ -85,19 +85,19 @@ class DbHelper {
 
     // Carnes
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2019/10/picanha-grelhada-na-churrasqueira-receita.jpg', 'Picanha Grelhada', 'Marcus F.', 2);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2019/10/picanha-grelhada-na-churrasqueira-receita.jpg', 'Picanha Grelhada', 'Marcus Fellype', 2);";
     await db.execute(sql);
 
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://s2-receitas.glbimg.com/Sekdv7EdPfw90fD-CiGEhXfhTjw=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/C/k/FH6JwZRxe5q3bUrZASYA/carne-de-panela-com-batatas.jpg', 'Carne de Panela', 'Jeferson G.', 2);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://s2-receitas.glbimg.com/Sekdv7EdPfw90fD-CiGEhXfhTjw=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/C/k/FH6JwZRxe5q3bUrZASYA/carne-de-panela-com-batatas.jpg', 'Carne de Panela', 'Jeferson Gama', 2);";
     await db.execute(sql);
 
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://i.ytimg.com/vi/MjUQFcWAZsw/maxresdefault.jpg', 'Costela na Pressão', 'Wadeilton F.', 2);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://i.ytimg.com/vi/MjUQFcWAZsw/maxresdefault.jpg', 'Costela na Pressão', 'Wadeilton Gomes', 2);";
     await db.execute(sql);
 
     sql =
-        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSywGzlIJVzEnvzDdLesDh9eeWs9FU9Ok5ABTW_nvC8s6WRTxgqfeXy_aSV&s=10', 'Bife à Parmegiana', 'João V.', 2);";
+        "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSywGzlIJVzEnvzDdLesDh9eeWs9FU9Ok5ABTW_nvC8s6WRTxgqfeXy_aSV&s=10', 'Bife à Parmegiana', 'João Vitor', 2);";
     await db.execute(sql);
 
     sql =
@@ -106,7 +106,7 @@ class DbHelper {
 
     //-- AVES (categoria_id = 3)
     sql =
-      "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://img.band.com.br/image/2025/06/18/frango-assado-com-legumes-e-ervas-185617.jpg', 'Frango Assado', 'Gustavo R.', 3);";
+      "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://img.band.com.br/image/2025/06/18/frango-assado-com-legumes-e-ervas-185617.jpg', 'Frango Assado', 'Gustavo Rafael', 3);";
     await db.execute(sql);
 
     sql =
@@ -206,7 +206,7 @@ class DbHelper {
     await db.execute(sql);
 
     sql =
-      "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2021/08/torta-salgada-receitas.jpg', 'Torta Salgada', 'Luana K.', 7);";
+      "INSERT INTO Receitas_Categoria (urlImagem, receita, user, categoria_id) VALUES ('https://guiadacozinha.com.br/wp-content/uploads/2021/08/torta-salgada-receitas.jpg', 'Torta Salgada', 'Luana Kellyn', 7);";
     await db.execute(sql);
   }
 }

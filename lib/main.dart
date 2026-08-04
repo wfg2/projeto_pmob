@@ -1,8 +1,8 @@
-import 'package:projeto/pages/home_screen.dart';
+import 'package:projeto/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: HomePage()),
+    MaterialApp(home: SplashPage()),
   );
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/db/PostReceitaDAO.dart';
 import 'package:projeto/domain/post_receita.dart';
+import 'package:projeto/pages/login_page.dart';
 import 'package:projeto/widget/container_posts.dart';
+import 'package:projeto/db/shared_prefs.dart';
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  SharedPrefs prefs =  SharedPrefs();
   List<PostReceita> listaPosts = [];
 
   @override
@@ -28,6 +31,7 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: buildActions(),
         leading: Icon(Icons.local_restaurant, size: 28, color: Colors.white),
         backgroundColor: Color(0xFF002566),
         titleSpacing: 2,
@@ -41,5 +45,25 @@ class _homeState extends State<home> {
             return ContainerPosts(postReceita: listaPosts[i]);
           })
     );
+  }
+
+  buildActions() {
+    return [
+      IconButton(
+        onPressed: () {
+          prefs.setUserStatus(false);
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return LoginPage();
+              },
+            ),
+          );
+        },
+        icon: Icon(Icons.logout),
+      ),
+    ];
   }
 }

@@ -47,7 +47,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
         return ReceitasProp(propReceitas: listaPropriedades[i]);
       },
     );
-  }
+  } //
 
   Widget infoPerfil(String numero, String texto) {
     return Column(

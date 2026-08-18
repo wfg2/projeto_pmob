@@ -15,6 +15,6 @@ class PropriedadesReceitasDAO {
     }
 
     await Future.delayed(Duration(seconds: 5));
-    return lista;
+    return lista; //
   }
 }

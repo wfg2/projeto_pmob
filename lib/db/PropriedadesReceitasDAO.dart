@@ -14,6 +14,7 @@ class PropriedadesReceitasDAO {
       lista.add(prop);
     }
 
+    await Future.delayed(Duration(seconds: 5));
     return lista;
   }
 }

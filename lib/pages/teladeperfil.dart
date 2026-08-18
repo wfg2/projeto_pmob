@@ -12,34 +12,40 @@ class TelaPerfil extends StatefulWidget {
 }
 class _TelaPerfilState extends State<TelaPerfil> {
   List<PropriedadeReceitas> lista = [];
+  late Future<List<PropriedadeReceitas>> futureListaPropriedades;
 
   int selectedIndex = 4;
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    lista = await PropriedadesReceitasDAO().listarPropriedadesReceitas();
-    await Future.delayed(Duration(seconds: 2));
-    setState(() {});
+    futureListaPropriedades = PropriedadesReceitasDAO().listarPropriedadesReceitas();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-      body: ListView.builder(
-          itemCount: lista.length + 1,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return buildTelaPerfil();
+      body: FutureBuilder(
+          future: futureListaPropriedades,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<PropriedadeReceitas> listaPropriedades = snapshot.requireData;
+              return buildListView(listaPropriedades);
             }
-            return ReceitasProp(propReceitas: lista[index - 1]);
-          }),
+            return Center(child: CircularProgressIndicator());
+        },
+
+        ),
       bottomNavigationBar: buildBottomNavBar(),
+    );
+  }
+
+  buildListView(listaPropriedades) {
+    return ListView.builder(
+      itemCount: listaPropriedades.length,
+      itemBuilder: (context, i) {
+        return ReceitasProp(propReceitas: listaPropriedades[i]);
+      },
     );
   }
 

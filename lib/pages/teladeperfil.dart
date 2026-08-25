@@ -11,7 +11,6 @@ class TelaPerfil extends StatefulWidget {
   State<TelaPerfil> createState() => _TelaPerfilState();
 }
 class _TelaPerfilState extends State<TelaPerfil> {
-  List<PropriedadeReceitas> lista = [];
   late Future<List<PropriedadeReceitas>> futureListaPropriedades;
 
   int selectedIndex = 4;
@@ -25,6 +24,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
       body: FutureBuilder(
           future: futureListaPropriedades,
           builder: (context, snapshot) {
@@ -34,7 +34,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
             }
             return Center(child: CircularProgressIndicator());
         },
-
         ),
       bottomNavigationBar: buildBottomNavBar(),
     );
@@ -42,11 +41,14 @@ class _TelaPerfilState extends State<TelaPerfil> {
 
   buildListView(listaPropriedades) {
     return ListView.builder(
-      itemCount: listaPropriedades.length,
+      itemCount: listaPropriedades.length + 1,
       itemBuilder: (context, i) {
-        return ReceitasProp(propReceitas: listaPropriedades[i]);
-      },
-    );
+        if (i == 0) {
+          return buildTelaPerfil();
+        }
+        return ReceitasProp(propReceitas: listaPropriedades[i - 1]);
+        },
+      );
   } //
 
   Widget infoPerfil(String numero, String texto) {

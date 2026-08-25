@@ -10,12 +10,6 @@ class SharedPrefs {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? value = prefs.getBool('USER');
 
-    // if (value == null) {
-    //   return false;
-    // } else {
-    //   return value;
-    // }
-
     return value ?? false;
   }
 }

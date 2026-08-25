@@ -62,7 +62,7 @@ class _homeState extends State<home> {
             ),
           );
         },
-        icon: Icon(Icons.logout),
+        icon: Icon(Icons.logout, color: Colors.white,),
       ),
     ];
   }

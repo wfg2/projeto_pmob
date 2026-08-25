@@ -144,5 +144,15 @@ class DBHelper {
       )
     ''';
     await db.execute(sql);
+
+    sql = '''CREATE TABLE USER ( 
+      username TEXT PRIMARY KEY,
+      password TEXT
+    ); ''';
+
+    await db.execute(sql);
+
+    sql = "INSERT INTO USER (username, password) VALUES ('isabela@gmail.com', '123456');";
+    await db.execute(sql);
   }
 }

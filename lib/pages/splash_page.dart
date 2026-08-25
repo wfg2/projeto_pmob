@@ -47,6 +47,9 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1800ad),
+      body: Center(
+        child: Image.asset('assets/imagens/Login.png')
+      )
     );
   }
 }

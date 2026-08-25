@@ -17,7 +17,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
       child: Container(
           height: 300,
-          width: 175.0,
+          width: double.infinity,
 
           decoration: BoxDecoration(
             color: Color(0xFFF8F9FA),

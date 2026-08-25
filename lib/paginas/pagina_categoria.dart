@@ -13,18 +13,12 @@ class TelaCategoria extends StatefulWidget {
 
 class _TelaCategoriaState extends State<TelaCategoria> {
 
-  List<Categoria> listaCategorias = [];
+  late Future<List<Categoria>> futureListaCategorias;
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    listaCategorias = await CategoriaDao().listarCategorias();
-    await Future.delayed(Duration(seconds: 0));
-    setState(() {});
+    futureListaCategorias = CategoriaDao().listarCategorias();
   }
 
   @override
@@ -45,12 +39,26 @@ class _TelaCategoriaState extends State<TelaCategoria> {
           )
       ),
 
-      body: ListView.builder(
-        itemCount: listaCategorias.length,
-        itemBuilder: (context, i) {
-          return ContainerCategoria(categoria: listaCategorias[i]);
-        },
+      body: FutureBuilder (
+        future: futureListaCategorias,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<Categoria> listarCategorias = snapshot.requireData;
+            return buildListView(listarCategorias);
+          }
+
+          return Center(child: CircularProgressIndicator());
+        }
       )
+    );
+  }
+
+  buildListView(listarCategorias) {
+    return ListView.builder(
+      itemCount: listarCategorias.length,
+      itemBuilder: (context, i) {
+        return ContainerCategoria(categoria: listarCategorias[i]);
+      },
     );
   }
 }

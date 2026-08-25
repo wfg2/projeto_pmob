@@ -14,6 +14,7 @@ class Receitascategoriadao {
       Receitascategorias receita = Receitascategorias.fromJson(json);
       lista.add(receita);
     }
+
     return lista;
   }
 }

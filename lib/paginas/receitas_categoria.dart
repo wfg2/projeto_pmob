@@ -15,18 +15,12 @@ class ReceitasCategoria extends StatefulWidget {
 
 class _ReceitasCategoriaState extends State<ReceitasCategoria> {
 
-  List<Receitascategorias> listareceitascategoria = [];
+  late Future<List<Receitascategorias>> futureListaReceitasCategoria;
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    listareceitascategoria =
-    await Receitascategoriadao().listarReceitascategorias(widget.categoria.id ?? 0);
-    setState(() {});
+    futureListaReceitasCategoria = Receitascategoriadao().listarReceitascategorias(widget.categoria.id ?? 0);
   }
 
   @override
@@ -50,13 +44,26 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
             ),
           ),
         ),
-        body: ListView.builder(
-          itemCount: listareceitascategoria.length,
-          itemBuilder: (context, i) {
-            return ContainerReceitasCategorias(
-                receitasCategorias: listareceitascategoria[i]);
-          },
+        body: FutureBuilder(
+          future: futureListaReceitasCategoria,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Receitascategorias> listaReceitasCategoria = snapshot.requireData;
+              return buildListView(listaReceitasCategoria);
+            }
+
+            return Center(child: CircularProgressIndicator());
+          }
         )
+    );
+  }
+
+  buildListView(listaReceitasCategorias) {
+    return ListView.builder (
+      itemCount: listaReceitasCategorias.length,
+      itemBuilder: (context, i) {
+        return ContainerReceitasCategorias(receitasCategorias: listaReceitasCategorias[i]);
+      }
     );
   }
 }

@@ -47,12 +47,12 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
           alignment: Alignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               child:
               Image.network(
                 widget.categoria.urlImagem,
                 height: 180,
-                width: 380,
+                width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
@@ -85,6 +85,4 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
       ),
     );
   }
-
-  onTapContainer() {}
 }

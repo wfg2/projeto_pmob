@@ -168,7 +168,10 @@ class _LoginPageState extends State<LoginPage> {
 
         prefs.setUserStatus(true);
       } else {
-        print('Usuario e/ou Senha incorreto');
+        ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Usuário e/ou Senha incorretos!'),
+          backgroundColor: Colors.red,),);
     }
 
   }

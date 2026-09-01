@@ -29,7 +29,7 @@ class _ContainerPostsState extends State<ContainerPosts> {
                   style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Montserrat',
-                      color: Color(0xFF002566)
+                      color: Color(0xFF0a27eb)
                   )),
               Spacer(flex: 2),
               Text(widget.postReceita.dataehora,
@@ -47,10 +47,10 @@ class _ContainerPostsState extends State<ContainerPosts> {
             children: [
               Column(
                 children: [
-                  Icon(Icons.favorite, size: 25, color: Color(0xFF002566)),
+                  Icon(Icons.favorite, size: 25, color: Color(0xFF0a27eb)),
                   Text(widget.postReceita.likes,
                       style: TextStyle(
-                          color: Color(0xFF002566),
+                          color: Color(0xFF0a27eb),
                           fontFamily: 'Montserrat-Regular',
                           fontSize: 10))
                 ],
@@ -59,10 +59,10 @@ class _ContainerPostsState extends State<ContainerPosts> {
               Column(
                 children: [
                   Icon(Icons.comment_rounded,
-                      size: 25, color: Color(0xFF002566)),
+                      size: 25, color: Color(0xFF0a27eb)),
                   Text(widget.postReceita.comentarios,
                       style: TextStyle(
-                          color: Color(0xFF002566),
+                          color: Color(0xFF0a27eb),
                           fontFamily: 'Montserrat-Regular',
                           fontSize: 10))
                 ],
@@ -70,10 +70,10 @@ class _ContainerPostsState extends State<ContainerPosts> {
               SizedBox(width: 10),
               Column(
                 children: [
-                  Icon(Icons.share, size: 25, color: Color(0xFF002566)),
+                  Icon(Icons.share, size: 25, color: Color(0xFF0a27eb)),
                   Text(widget.postReceita.compartilhamentos,
                       style: TextStyle(
-                          color: Color(0xFF002566),
+                          color: Color(0xFF0a27eb),
                           fontFamily: 'Montserrat-Regular',
                           fontSize: 10))
                 ],
@@ -102,7 +102,7 @@ class _ContainerPostsState extends State<ContainerPosts> {
   buildcircleAvatar(String profilephoto) {
     return CircleAvatar(
       radius: 23,
-      backgroundColor: Color(0xFF002566),
+      backgroundColor: Color(0xFF0a27eb),
       child: CircleAvatar(
         radius: 21,
         backgroundImage: NetworkImage(profilephoto),

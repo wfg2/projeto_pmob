@@ -56,7 +56,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
                   Text(
                     widget.cardDetalhes.nomereceita,
                     style: TextStyle(
-                        color: Color(0xFF002566),
+                        color: Color(0xFF0a27eb),
                         fontFamily: 'Montserrat',
                         fontSize: 12),
                   ),
@@ -64,7 +64,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
                     children: [
                       Icon(
                         Icons.timer,
-                        color: Color(0xFF002566),
+                        color: Color(0xFF0a27eb),
                         size: 18,
                       ),
                       SizedBox(
@@ -73,7 +73,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
                       Text(
                         '${widget.cardDetalhes.temporeceita} min',
                         style: TextStyle(
-                            color: Color(0xFF002566),
+                            color: Color(0xFF0a27eb),
                             fontFamily: 'Montserrat-Regular',
                             fontSize: 10),
                       ),
@@ -82,7 +82,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
                       ),
                       Icon(
                         Icons.graphic_eq,
-                        color: Color(0xFF002566),
+                        color: Color(0xFF0a27eb),
                         size: 18,
                       ),
                       SizedBox(
@@ -91,7 +91,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
                       Text(
                         widget.cardDetalhes.nivelreceita,
                         style: TextStyle(
-                            color: Color(0xFF002566),
+                            color: Color(0xFF0a27eb),
                             fontFamily: 'Montserrat-Regular',
                             fontSize: 10),
                       )
@@ -103,7 +103,7 @@ class _ContainerDetalhesState extends State<ContainerDetalhes> {
               Padding(padding: EdgeInsets.all(15),
                 child: Text('Ver Receita',
                     style: TextStyle(
-                        color: Color(0xFF002566),
+                        color: Color(0xFF0a27eb),
                         fontFamily: 'Montserrat-Regular',
                         fontSize: 12,
                         fontWeight: FontWeight.bold

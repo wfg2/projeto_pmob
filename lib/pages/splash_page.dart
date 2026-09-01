@@ -46,9 +46,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1800ad),
+      backgroundColor: Color(0xFF0a27eb),
       body: Center(
-        child: Image.asset('assets/imagens/Login.png')
+        child: Image.asset('assets/images/splash.png')
       )
     );
   }

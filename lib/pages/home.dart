@@ -33,7 +33,7 @@ class _homeState extends State<home> {
       appBar: AppBar(
         actions: buildActions(),
         leading: Icon(Icons.local_restaurant, size: 28, color: Colors.white),
-        backgroundColor: Color(0xFF002566),
+        backgroundColor: Color(0xFF0a27eb),
         titleSpacing: 2,
         title: Text('Dendê',
             style: TextStyle(

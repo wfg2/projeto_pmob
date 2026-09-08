@@ -20,7 +20,7 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
   @override
   void initState() {
     super.initState();
-    futureListaReceitasCategoria = Receitascategoriadao().listarReceitascategorias(widget.categoria.id ?? 0);
+    futureListaReceitasCategoria = Receitascategoriadao().listarReceitascategorias((widget.categoria.id ?? null) as int);
   }
 
   @override

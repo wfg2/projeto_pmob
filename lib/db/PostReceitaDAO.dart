@@ -19,6 +19,7 @@ class PostReceitaDao {
       lista.add(post);
     }
 
+    await Future.delayed(Duration(seconds: 5));
     return lista;
   }
 }

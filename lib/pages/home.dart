@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/db/PostReceitaDAO.dart';
+import 'package:projeto/api/PostReceita_api.dart';
 import 'package:projeto/domain/post_receita.dart';
 import 'package:projeto/pages/login_page.dart';
 import 'package:projeto/widget/container_posts.dart';
@@ -14,17 +14,13 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   SharedPrefs prefs =  SharedPrefs();
-  List<PostReceita> listaPosts = [];
+  late Future<List<PostReceita>> futureListaPosts;
+
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    listaPosts = await PostReceitaDao().listarPostReceitas();
-    setState(() {});
+    futureListaPosts = PostReceitaApi().listarPostReceitas();
   }
 
   @override
@@ -39,12 +35,24 @@ class _homeState extends State<home> {
             style: TextStyle(
                 fontFamily: 'Allison', color: Colors.white, fontSize: 40)),
       ),
-      body: ListView.builder(
-          itemCount: listaPosts.length,
-          itemBuilder: (context, i){
-            return ContainerPosts(postReceita: listaPosts[i]);
-          })
+      body: FutureBuilder(
+        future: futureListaPosts,
+        builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<PostReceita> listaPosts = snapshot.requireData;
+          return buildListView(listaPosts);
+        }
+        return Center(child: CircularProgressIndicator(color: Color(0xFF0a27eb)));
+      },)
     );
+  }
+
+  buildListView(listaPosts){
+    return ListView.builder(
+      itemCount: listaPosts.length,
+      itemBuilder: (context, i){
+        return ContainerPosts(postReceita: listaPosts[i]);
+      });
   }
 
   buildActions() {
@@ -66,4 +74,6 @@ class _homeState extends State<home> {
       ),
     ];
   }
+
+
 }

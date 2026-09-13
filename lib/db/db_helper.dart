@@ -50,5 +50,18 @@ class DbHelper {
     sql =
     "INSERT INTO Receitas (nome, imagem, tempo, categoria) VALUES ('Cocada', 'https://static.itdg.com.br/images/640-400/053d6463e51b271876948230e193ec4b/cocada-cremosa.jpg', '40 min', 'Nordestina');";
     await db.execute(sql);
+
+    //novas receitas
+    sql =
+    "INSERT INTO Receitas (nome, imagem, tempo, categoria) VALUES ('Bobó de camarão', 'https://www.lecreuset.com.br/on/demandware.static/-/Sites-le-creuset-br-master/default/dw411fe6d9/images/receitas%20&%20gif/Imagens-Receitas-Pascoa/bobo-de-camarao.jpg', '50 min', 'Nordestina');";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO Receitas (nome, imagem, tempo, categoria) VALUES ('Arroz doce', 'https://guiadacozinha.com.br/wp-content/uploads/2008/01/Arroz-doce-com-coco.jpg', '30 min', 'Nordestina');";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO Receitas (nome, imagem, tempo, categoria) VALUES ('Mungunzá', 'https://s2-receitas.glbimg.com/ibE_T45zPtADXACO1__VpE1CWa0=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2024/D/u/OYKOMyQxAJ7LUAhr7bWA/mugunza.jpg', '1h', 'Nordestina');";
+    await db.execute(sql);
   }
 }

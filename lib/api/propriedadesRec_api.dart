@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 
 class PropriedadesRecApi {
   final dio = Dio();
-  String baseUrl = '';
+  String baseUrl = 'https://my-json-server.typicode.com/wfg2/api_fake';
 
   Future<List<PropriedadeReceitas>> listarPropriedades() async {
-    final response = await dio.get('$baseUrl/propriedades');
+    final response = await dio.get('$baseUrl/receitas');
 
     List<PropriedadeReceitas> lista = [];
 

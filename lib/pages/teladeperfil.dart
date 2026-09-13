@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/api/propriedadesRec_api.dart';
 import 'package:projeto/pages/novareceita.dart';
-import 'package:projeto/db/PropriedadesReceitasDAO.dart';
 import 'package:projeto/widget/container_receita.dart';
 import 'package:projeto/domain/PropriedadesReceitas.dart';
 
@@ -18,7 +18,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
   @override
   void initState() {
     super.initState();
-    futureListaPropriedades = PropriedadesReceitasDAO().listarPropriedadesReceitas();
+    futureListaPropriedades = PropriedadesRecApi().listarPropriedades();
   }
 
   @override

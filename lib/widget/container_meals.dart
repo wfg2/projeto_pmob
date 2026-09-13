@@ -15,7 +15,6 @@ class _ContainerMealsState extends State<ContainerMeals> {
     return Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 12, vertical: 12),
         child: Container(
-          height: 320,
           width: double.infinity,
           decoration: BoxDecoration(
             color : Color(0xFFF8F9FA),
@@ -31,6 +30,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
 
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -53,6 +53,8 @@ class _ContainerMealsState extends State<ContainerMeals> {
                         Expanded(
                             child: Text(
                                 widget.meals.nome,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontFamily: 'Montserrat',
                                     fontSize: 18.0,
@@ -61,6 +63,8 @@ class _ContainerMealsState extends State<ContainerMeals> {
                                 )
                             )
                         ),
+
+                        SizedBox(width: 8),
 
                         Row(
                           children: [
@@ -85,6 +89,18 @@ class _ContainerMealsState extends State<ContainerMeals> {
                         )
                       ],
                     )
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(left: 12, right: 12),
+                  child: Text(
+                      'Categoria: ${widget.meals.categoria}',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 16.0,
+                        color: Color(0xFF002566),
+                      )
+                  ),
                 ),
 
                 Padding(

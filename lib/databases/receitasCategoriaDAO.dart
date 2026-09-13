@@ -1,4 +1,4 @@
-import 'package:projeto/domain/receitasCategorias.dart';
+import 'package:projeto/domain/receitas_categorias.dart';
 import 'package:sqflite/sqflite.dart';
 import 'db_helper.dart';
 

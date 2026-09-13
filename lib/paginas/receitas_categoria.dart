@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/api/receitas_categoria_api.dart';
 import 'package:projeto/databases/receitasCategoriaDAO.dart';
 import 'package:projeto/domain/categoria.dart';
 import 'package:projeto/widget/container_receitas_categorias.dart';
-import 'package:projeto/domain/receitasCategorias.dart';
+import 'package:projeto/domain/receitas_categorias.dart';
 
 class ReceitasCategoria extends StatefulWidget {
   Categoria categoria;
@@ -20,7 +21,8 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
   @override
   void initState() {
     super.initState();
-    futureListaReceitasCategoria = Receitascategoriadao().listarReceitascategorias((widget.categoria.id ?? null) as int);
+    print('Categoria ID recebido: ${widget.categoria.id}');
+    futureListaReceitasCategoria = ReceitasCategoriaApi().listarReceitasCategoria(widget.categoria.id);
   }
 
   @override
@@ -47,6 +49,10 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
         body: FutureBuilder(
           future: futureListaReceitasCategoria,
           builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              print('ERRO: ${snapshot.error}');
+              return Center(child: Text('Erro: ${snapshot.error}'));
+            }
             if (snapshot.hasData) {
               List<Receitascategorias> listaReceitasCategoria = snapshot.requireData;
               return buildListView(listaReceitasCategoria);

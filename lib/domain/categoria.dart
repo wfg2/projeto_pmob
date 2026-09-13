@@ -1,5 +1,5 @@
 class Categoria {
-  late String id;
+  late int id;
   late String urlImagem;
   late String categoria;
 

@@ -6,7 +6,7 @@ class CategoriasApi {
   String baseUrl = 'https://my-json-server.typicode.com/Richard-Braga/fake_api';
 
   Future<List<Categoria>> listarCategorias() async {
-    final response = await dio.get('$baseUrl/Categorias');
+    final response = await dio.get('$baseUrl/Categoria');
 
     List<Categoria> lista = [];
 

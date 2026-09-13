@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/domain/receitasCategorias.dart';
+import 'package:projeto/domain/receitas_categorias.dart';
 
 class ContainerReceitasCategorias extends StatefulWidget {
   Receitascategorias receitasCategorias;
@@ -16,7 +16,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
       child: Container(
-          height: 300,
+          height: 350,
           width: double.infinity,
 
           decoration: BoxDecoration(
@@ -41,6 +41,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
 
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -49,15 +50,14 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                   ),
                   child: Image.network(
                     widget.receitasCategorias.urlImagem,
-                    height: 180,
+                    height: 220,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
 
-
                 Padding(
-                  padding: EdgeInsets.only(left: 12, top: 12, right: 12, bottom: 10),
+                  padding: EdgeInsets.only(left: 12, right: 12),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -72,16 +72,35 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                             )
                         ),
                       ),
-                      Icon(
-                        size: 20,
-                        Icons.favorite_border,
-                        color: Color(0xFF002566),
-                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.receitasCategorias.rate.toString(),
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 16.0,
+                              color: Color(0xFF002566),
+                              fontWeight: FontWeight.bold
+                            )
+                          ),
+
+                          SizedBox(width: 5),
+
+                          Icon(
+                            size: 25,
+                            Icons.star_half_rounded,
+                            color: Color(0xFF002566),
+                          ),
+                        ],
+                      )
+
                     ],
                   ),
                 ),
+
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0, bottom: 10),
+                  padding: EdgeInsets.only(left: 12.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -103,21 +122,20 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Text(
-                              'Postado por: ${widget.receitasCategorias.user}',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 14.0,
-                                  color: Color(0xFF002566),
-                                  fontWeight: FontWeight.bold
-                              )
-                          ),
-                        ],
-                      )
                     ],
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(left: 12, right: 12, bottom: 15),
+                  child: Text(
+                      'Postado por: ${widget.receitasCategorias.user}',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 14.0,
+                          color: Color(0xFF002566),
+                          fontWeight: FontWeight.bold
+                      )
                   ),
                 ),
               ],

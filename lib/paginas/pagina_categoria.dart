@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/databases/categoriaDao.dart';
 import 'package:projeto/domain/categoria.dart';
 import 'package:projeto/widget/container_categoria.dart';
 import 'package:projeto/api/categorias_api.dart';

@@ -10,7 +10,7 @@ class Mealsapi {
 
     List<Meals> lista = [];
 
-    if (response.statusCode == 200 && response.data['meals'] != null) {
+    if (response.statusCode == 200) {
       for (var json in response.data['meals']) {
         lista.add(Meals.fromJson(json));
       }

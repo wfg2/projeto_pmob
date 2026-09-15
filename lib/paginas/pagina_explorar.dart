@@ -40,7 +40,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Allison',
-                fontSize: 50,
+                fontSize: 40,
                 fontWeight: FontWeight.bold
               )
             ),

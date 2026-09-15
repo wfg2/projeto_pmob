@@ -39,7 +39,7 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
             style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Allison',
-                fontSize: 50,
+                fontSize: 40,
                 fontWeight: FontWeight.bold
             ),
           ),

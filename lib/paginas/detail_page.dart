@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/meals.dart';
+import 'package:translator/translator.dart';
 
 class DetailPage extends StatefulWidget {
   Meals meals;
@@ -34,41 +35,64 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: ListView(
         children: [
-          Image.network(
-            widget.meals.urlImagem,
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                titles('Receita: ', widget.meals.nome),
-                titles('Categoria: ', widget.meals.categoria),
-                titles('País de Origem: ', widget.meals.pais),
-                titles('Ingredientes: ', widget.meals.ingredientes.join(', ')),
-                Text(
-                  'Modo de Preparo: ',
-                  style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 16,
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.all(
+                Radius.circular(16)
+              ),
+              child: Image.network(
+                widget.meals.urlImagem,
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8, left: 12, right: 12),
+            child: Text(
+              'Informações da Receita:',
+              style: TextStyle(
+                  color: Color(0xFF002566),
+                  fontFamily: 'Montserrat',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+              )
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, right: 12, top: 6),
+            child: Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  titles('Nome: ', widget.meals.nome),
+                  titles('Categoria: ', widget.meals.categoria),
+                  titles('País de Origem: ', widget.meals.pais),
+                  titles('Ingredientes: ', widget.meals.ingredientes.join(', ')),
+                  SizedBox(height: 6),
+                  Divider(
                       color: Color(0xFF002566),
-                      fontWeight: FontWeight.bold
+                      thickness: 3
                   ),
-                ),
-                Text(
-                  widget.meals.instrucoes,
-                  style: textStyle(15)
-                )
-              ],
+                  SizedBox(height: 6),
+                  titles('Modo de Preparo: ', widget.meals.instrucoes)
+                ],
+              ),
             ),
           )
         ],
       ),
     );
+  }
+  
+  Future<String> traduzirTexto(String textoEn) async {
+    final translator = GoogleTranslator();
+    
+    var translation = await translator.translate(textoEn, from: 'en', to: 'pt');
+    
+    return translation.text;
   }
 
   textStyle(double? size) {
@@ -81,7 +105,8 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   titles(String title, String meal) {
-    return Row(
+    return Wrap(
+      spacing: 1.5,
       children: [
         Text(
           title,
@@ -94,7 +119,8 @@ class _DetailPageState extends State<DetailPage> {
         ),
         Text(
           meal,
-          style: textStyle(16)
+          style: textStyle(16),
+          textAlign: TextAlign.justify,
         )
       ],
     );

@@ -11,6 +11,7 @@ class _NovaReceitaState extends State<NovaReceita> {
   Color corPrincipal = Color(0xff100ea6);
 
   TextEditingController nome = TextEditingController();
+  TextEditingController categoria = TextEditingController();
   TextEditingController tempo = TextEditingController();
   TextEditingController ingredientes = TextEditingController();
   TextEditingController descricao = TextEditingController();
@@ -20,7 +21,8 @@ class _NovaReceitaState extends State<NovaReceita> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
       appBar: AppBar(
         title: Text("Nova receita",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
@@ -55,38 +57,10 @@ class _NovaReceitaState extends State<NovaReceita> {
               icon: Icons.fastfood,
             ),
             SizedBox(height: 15),
-            Card(
-              elevation: 3,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: DropdownButtonFormField<String>(
-                  initialValue: tipo,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Icon(
-                      Icons.public,
-                      color: corPrincipal,
-                    ),
-                  ),
-                  items: [
-                    "Nordestina",
-                    "Italiana",
-                    "Japonesa",
-                    "Mineira",
-                    "Vegana",
-                  ].map((tipo) {
-                    return DropdownMenuItem(
-                      value: tipo,
-                      child: Text(tipo),
-                    );
-                  }).toList(),
-                  onChanged: (valor) {
-                    setState(() {
-                      tipo = valor!;
-                    });
-                  },
-                ),
-              ),
+            campoTexto(
+              controller: categoria,
+              label: "Categoria:",
+              icon: Icons.food_bank,
             ),
             SizedBox(height: 15),
             campoTexto(
@@ -148,6 +122,7 @@ class _NovaReceitaState extends State<NovaReceita> {
                   }
 
                   nome.clear();
+                  categoria.clear();
                   tempo.clear();
                   ingredientes.clear();
                   descricao.clear();
@@ -174,6 +149,7 @@ class _NovaReceitaState extends State<NovaReceita> {
           ],
         ),
       ),
+    ),
     );
   }
 

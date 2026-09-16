@@ -71,7 +71,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 18.0,
-                                      color: Color(0xFF002566),
+                                      color: Color(0xFF1800ad),
                                       fontWeight: FontWeight.bold
                                   )
                               )
@@ -86,7 +86,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.0,
-                                      color: Color(0xFF002566),
+                                      color: Color(0xFF1800ad),
                                       fontWeight: FontWeight.bold
                                   )
                               ),
@@ -96,7 +96,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                               Icon(
                                 size: 25,
                                 Icons.star_half_rounded,
-                                color: Color(0xFF002566),
+                                color: Color(0xFF1800ad),
                               ),
                             ]
                           )
@@ -111,7 +111,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 16.0,
-                          color: Color(0xFF002566),
+                          color: Color(0xFF1800ad),
                         )
                     ),
                   ),
@@ -123,7 +123,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 16.0,
-                            color: Color(0xFF002566),
+                            color: Color(0xFF1800ad),
                         )
                     ),
                   )

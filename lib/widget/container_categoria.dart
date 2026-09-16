@@ -29,20 +29,10 @@ class _ContainerCategoriaState extends State<ContainerCategoria> {
       child: Container(
         alignment: Alignment.center,
         margin: EdgeInsets.all(10.0),
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              offset: const Offset(2, 5),
-            ),
-          ],
         ),
-
-        child:
-        Stack(
+        child: Stack(
           fit: StackFit.passthrough,
           alignment: Alignment.center,
           children: [

@@ -33,7 +33,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Color(0xFF002566),
+            backgroundColor: Color(0xFF1800ad),
             leading: Icon(Icons.restaurant, color: Colors.white, size: 30),
             title: Text(
               'Explorar',
@@ -54,15 +54,16 @@ class _TelaExplorarState extends State<TelaExplorar> {
                 controller: buscar,
                 onSubmitted: (valor) => onPressed(),
                 decoration: InputDecoration(
+                  focusColor: Color(0xFF1800ad),
                     prefixIcon: IconButton(
                       icon: Icon(Icons.search,
-                          color: Color(0xFF002566)),
+                          color: Color(0xFF1800ad)),
                       onPressed: onPressed,
                     ),
 
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear,
-                          color: Color(0xFF002566)),
+                          color: Color(0xFF1800ad)),
                       onPressed: () {
                         setState(() {
                           buscar.clear();
@@ -83,6 +84,13 @@ class _TelaExplorarState extends State<TelaExplorar> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(24.0),
                     )
+                ),
+
+                style: TextStyle(
+                  color: Color(0xFF002566),
+                  fontSize: 16.0,
+                  fontFamily: 'Montserrat',
+
                 ),
               ),
             ),

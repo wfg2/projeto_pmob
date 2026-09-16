@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto/paginas/pagina_explorar.dart';
 import 'package:projeto/paginas/pagina_categoria.dart';
 
-// cor: 0xFF002566
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -54,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildBottomNavBar(){
     return BottomNavigationBar(
-      backgroundColor: Color(0xFF002566),
+      backgroundColor: Color(0xFF1800ad),
       currentIndex: selectedIndex,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
@@ -67,39 +65,26 @@ class _HomePageState extends State<HomePage> {
       },
       items: [
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.house,
-          ),
-          label: 'Home',
-        ),
-
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+            activeIcon: Icon(Icons.home)),
         BottomNavigationBarItem(
-            icon: Icon(
-                Icons.fastfood
-            ),
-            label: 'Categorias'
-        ),
-
+            icon: Icon(Icons.fastfood_outlined),
+            label: 'Categorias',
+            activeIcon: Icon(Icons.fastfood)),
         BottomNavigationBarItem(
-            icon: Icon(
-                Icons.restaurant
-            ),
-            label: 'Explorar'
+            icon: Icon(Icons.restaurant_outlined),
+            label: 'Explorar',
+            activeIcon: Icon(Icons.restaurant)
         ),
-
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-            ),
-            label: 'Favoritos'
-        ),
-
+            icon: Icon(Icons.favorite_outline),
+            label: 'Favoritos',
+            activeIcon: Icon(Icons.favorite)),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person
-          ),
-          label: 'Perfil'
-        )
+            icon: Icon(Icons.person_outline),
+            label: 'Perfil',
+            activeIcon: Icon(Icons.person)),
       ],
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/meals.dart';
-import 'package:translator/translator.dart';
 
 class DetailPage extends StatefulWidget {
   Meals meals;
@@ -12,11 +11,12 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF002566),
+        backgroundColor: Color(0xFF1800ad),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -36,10 +36,10 @@ class _DetailPageState extends State<DetailPage> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 8),
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.all(
-                Radius.circular(16)
+                Radius.circular(13)
               ),
               child: Image.network(
                 widget.meals.urlImagem,
@@ -52,78 +52,85 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 12, right: 12),
             child: Text(
-              'Informações da Receita:',
+              'INFORMAÇÕES GERAIS:',
               style: TextStyle(
-                  color: Color(0xFF002566),
-                  fontFamily: 'Montserrat',
-                  fontSize: 20,
+                  color: Color(0xFF1800ad),
+                  fontFamily: 'Oswald',
+                  fontSize: 25,
                   fontWeight: FontWeight.bold
               )
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 12.0, right: 12, top: 6),
-            child: Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  titles('Nome: ', widget.meals.nome),
-                  titles('Categoria: ', widget.meals.categoria),
-                  titles('País de Origem: ', widget.meals.pais),
-                  titles('Ingredientes: ', widget.meals.ingredientes.join(', ')),
-                  SizedBox(height: 6),
-                  Divider(
-                      color: Color(0xFF002566),
-                      thickness: 3
-                  ),
-                  SizedBox(height: 6),
-                  titles('Modo de Preparo: ', widget.meals.instrucoes)
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                titles('Nome: ', widget.meals.nome),
+                titles('Categoria: ', widget.meals.categoria),
+                titles('País de Origem: ', widget.meals.pais),
+                titles('Ingredientes: ', widget.meals.ingredientes.join(', ')),
+                SizedBox(height: 6),
+                Divider(
+                    color: Color(0xFF1800ad),
+                    thickness: 3
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'MODO DE PREPARO: ',
+                    style: TextStyle(
+                    color: Color(0xFF1800ad),
+                    fontFamily: 'Oswald',
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold
+                    )
+                ),
+                SizedBox(height: 6),
+                Text(
+                  widget.meals.instrucoes,
+                  style: textStyle(15),
+                  textAlign: TextAlign.justify,
+                )
+              ],
             ),
           )
         ],
       ),
     );
   }
-  
-  Future<String> traduzirTexto(String textoEn) async {
-    final translator = GoogleTranslator();
-    
-    var translation = await translator.translate(textoEn, from: 'en', to: 'pt');
-    
-    return translation.text;
-  }
 
   textStyle(double? size) {
     return TextStyle(
         fontFamily: 'Montserrat',
         fontSize: size,
-        color: Color(0xFF002566),
+        color: Color(0xFF1800ad),
         //fontWeight: FontWeight.bold
     );
   }
 
   titles(String title, String meal) {
-    return Wrap(
-      spacing: 1.5,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 16,
-            color: Color(0xFF002566),
-            fontWeight: FontWeight.bold
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4.0),
+      child: RichText(
+        textAlign: TextAlign.justify,
+        text: TextSpan(
+        children: [
+          TextSpan(
+            text: title,
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 16,
+              color: Color(0xFF1800ad),
+              fontWeight: FontWeight.bold
+            )
+          ),
+          TextSpan(
+            text: meal,
+            style: textStyle(15),
           )
-        ),
-        Text(
-          meal,
-          style: textStyle(16),
-          textAlign: TextAlign.justify,
-        )
-      ],
+        ],
+      ),
+      ),
     );
   }
 }
-

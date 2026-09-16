@@ -18,4 +18,18 @@ class Mealsapi {
 
     return lista;
   }
+
+  Future<List<Meals>> listarReceitasPorIngrediente(String ingrediente) async {
+    final response = await dio.get('$baseUrl/filter.php?i=$ingrediente');
+
+    List<Meals> lista = [];
+
+    if (response.statusCode == 200) {
+      for (var json in response.data['meals']) {
+        lista.add(Meals.fromJson(json));
+      }
+    }
+
+    return lista;
+  }
 }

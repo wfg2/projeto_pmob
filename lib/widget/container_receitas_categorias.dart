@@ -67,7 +67,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontSize: 18.0,
-                                color: Color(0xFF002566),
+                                color: Color(0xFF1800ad),
                                 fontWeight: FontWeight.bold
                             )
                         ),
@@ -80,7 +80,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 16.0,
-                              color: Color(0xFF002566),
+                              color: Color(0xFF1800ad),
                               fontWeight: FontWeight.bold
                             )
                           ),
@@ -90,7 +90,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                           Icon(
                             size: 25,
                             Icons.star_half_rounded,
-                            color: Color(0xFF002566),
+                            color: Color(0xFF1800ad),
                           ),
                         ],
                       )
@@ -108,7 +108,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                         children: [
                           Icon(
                             Icons.timer,
-                            color: Color(0xFF002566),
+                            color: Color(0xFF1800ad),
                             size: 20,
                           ),
                           SizedBox(width: 5),
@@ -117,7 +117,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 14.0,
-                              color: Color(0xFF002566),
+                              color: Color(0xFF1800ad),
                             )
                           ),
                         ],
@@ -133,7 +133,7 @@ class _ConatinerReceitasCategoriasState extends State<ContainerReceitasCategoria
                       style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 14.0,
-                          color: Color(0xFF002566),
+                          color: Color(0xFF1800ad),
                           fontWeight: FontWeight.bold
                       )
                   ),

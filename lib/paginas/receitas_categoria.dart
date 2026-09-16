@@ -27,7 +27,7 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF002566),
+          backgroundColor: Color(0xFF1800ad),
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);

@@ -24,7 +24,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
+      child: Scaffold(
       appBar: buildAppBar(),
       body: FutureBuilder(
           future: futureListaPropriedades,

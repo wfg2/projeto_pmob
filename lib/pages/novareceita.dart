@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/api/receitas_api.dart';
+import 'package:projeto/domain/Receitas.dart';
 
 class NovaReceita extends StatefulWidget {
   const NovaReceita({Key? key}) : super(key: key);
@@ -16,8 +18,6 @@ class _NovaReceitaState extends State<NovaReceita> {
   TextEditingController ingredientes = TextEditingController();
   TextEditingController descricao = TextEditingController();
   TextEditingController foto = TextEditingController();
-
-  String tipo = "Nordestina";
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +40,26 @@ class _NovaReceitaState extends State<NovaReceita> {
               decoration: BoxDecoration(color: corPrincipal, borderRadius: BorderRadius.circular(16)),
               child: Column(
                 children: [
-                  Icon(Icons.restaurant_menu, size: 60, color: Colors.white,
+                  Icon(Icons.restaurant, size: 30, color: Colors.white,
                   ),
                   SizedBox(height: 10),
-                  Text("Compartilhe sua receita!", textAlign: TextAlign.center,
+                  Text("Compartilhe sua receita", textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
-            campoTexto(
+            SizedBox(height: 15),
+            TextField(
               controller: nome,
-              label: "Nome da receita:",
-              icon: Icons.fastfood,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(onPressed: onPressedFindByName, icon: Icon(Icons.search)),
+                hintText: 'Buscar receita pelo nome...',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xff100ea6)),
+                )
+              ),
             ),
             SizedBox(height: 15),
             campoTexto(
@@ -88,7 +93,7 @@ class _NovaReceitaState extends State<NovaReceita> {
               label: "URL da foto da receita:",
               icon: Icons.image,
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 15),
             SizedBox(
               width: double.infinity,
               height: 55,
@@ -99,48 +104,13 @@ class _NovaReceitaState extends State<NovaReceita> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {
-                  if (nome.text.isEmpty ||
-                      tempo.text.isEmpty ||
-                      ingredientes.text.isEmpty ||
-                      descricao.text.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Preencha todos os campos!"),
-                      ),
-                    );
-                    return;
-                  }
-
-                  if (foto.text.isNotEmpty && !foto.text.startsWith('http')){
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Coloque uma URL válida de imagem!"),
-                      ),
-                    );
-                    return;
-                  }
-
-                  nome.clear();
-                  categoria.clear();
-                  tempo.clear();
-                  ingredientes.clear();
-                  descricao.clear();
-                  foto.clear();
-
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("A receita foi postada com sucesso!"),
-                    ),
-
-                  );
-                },
+                onPressed: () {},
                 icon: Icon(Icons.upload, color: Colors.white),
                 label: Text(
                   "Publicar receita",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 20,
                   ),
                 ),
               ),
@@ -151,6 +121,13 @@ class _NovaReceitaState extends State<NovaReceita> {
       ),
     ),
     );
+  }
+
+  Future<void> onPressedFindByName() async {
+    String name = nome.text;
+    Receitas receita = await ReceitasApi().findByName(name);
+
+    nome.text = '';
   }
 
   Widget campoTexto({

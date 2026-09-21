@@ -5,7 +5,7 @@ class ReceitasApi {
   final dio = Dio();
   String baseUrl = '';//LINK BASE DA API VERDADEIRA, NÃO ESQUECER
 
-  findByName(String nome) async {
+  findByName(String name) async {
     late Receitas receita;
     final response = await dio.get('$baseUrl'); //LINK DA API VERDADEIRA
 

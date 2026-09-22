@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto/db/shared_prefs.dart';
 import 'package:projeto/pages/cadastro_page.dart';
 import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/db/userDAO.dart';
+import 'package:projeto/api/user_api.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -154,25 +154,38 @@ class _LoginPageState extends State<LoginPage> {
     String username = userController.text;
     String password = passwordController.text;
 
-    bool isAuth = await UserDao().login(username, password);
+    if (username.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Preencha todos os campos!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
 
+    bool isAuth = await UserApi().login(username, password);
+    
     if (isAuth) {
+      await prefs.setUserStatus(true);
+
+      if (context.mounted) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) {
-              return HomePage();
-            },
+            builder: (context) => const HomePage(),
           ),
         );
-
-        prefs.setUserStatus(true);
-      } else {
+      }
+    } else {
+      if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Usuário e/ou Senha incorretos!'),
-          backgroundColor: Colors.red,),);
+          const SnackBar(
+            content: Text('Usuário e/ou Senha incorretos!'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
-
   }
 }

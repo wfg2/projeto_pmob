@@ -1,5 +1,5 @@
 import 'package:projeto/db/shared_prefs.dart';
-import 'package:projeto/pages/home.dart';
+import 'package:projeto/pages/home_screen.dart';
 import 'package:projeto/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return home();
+            return HomePage();
           },
         ),
       );

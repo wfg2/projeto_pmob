@@ -86,7 +86,7 @@ class _CadastroPageState extends State<CadastroPage> {
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 30),
+              Padding(padding: EdgeInsets.symmetric(horizontal: 30),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF1800ad),

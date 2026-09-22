@@ -17,12 +17,12 @@ class Receitas {
 
   factory Receitas.fromJson(Map<String, dynamic> json) {
     return Receitas(
-      nome: json['nome'] ?? '',
-      categoria: json['categoria'] ?? '',
-      tempo: json['tempo'] ?? '',
-      ingredientes: json['ingredientes'] ?? '',
-      descricao: json['descricao'] ?? '',
-      foto: json['foto'] ?? '',
+      nome: json['title'] ?? '',
+      categoria: '',
+      tempo: '',
+      ingredientes: (json['ingredients'] as List).join('\n'),
+      descricao: (json['instructions'] as List).join('\n'),
+      foto: '',
     );
   }
 }

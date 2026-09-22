@@ -127,7 +127,9 @@ class _NovaReceitaState extends State<NovaReceita> {
     String name = nome.text;
     Receitas receita = await ReceitasApi().findByName(name);
 
-    nome.text = '';
+    nome.text = receita.nome;
+    ingredientes.text = receita.ingredientes;
+    descricao.text = receita.descricao;
   }
 
   Widget campoTexto({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/db/shared_prefs.dart';
 import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/db/userDAO.dart';
+import 'package:projeto/api/user_api.dart';
 import 'package:projeto/domain/user.dart';
 
 class CadastroPage extends StatefulWidget {
@@ -97,18 +97,38 @@ class _CadastroPageState extends State<CadastroPage> {
                   onPressed: () async {
                     String username = userController.text;
                     String password = passwordController.text;
+
                     if (username.isNotEmpty && password.isNotEmpty) {
                       User newUser = User(username, password);
-                      await UserDao().saveUser(newUser);
-                      await SharedPrefs().setUserStatus(true);
-                      if (context.mounted) {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()),);
+
+                      bool sucessoCadastro = await UserApi().cadastrar(newUser);
+
+                      if (sucessoCadastro) {
+                        await SharedPrefs().setUserStatus(true);
+
+                        if (context.mounted) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomePage()),
+                          );
+                        }
+                      } else {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Erro ao realizar cadastro na API!'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
                       }
                     } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                    content: Text('Preencha todos os campos!'),
-                    backgroundColor: Colors.red,),);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Preencha todos os campos!'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
                     }
                   },
                   child: Text(

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:projeto/api/meals_api.dart';
-
+import 'dart:math';
 import '../domain/meals.dart';
 
 class ReceitasPadrao extends StatefulWidget {
@@ -27,24 +27,28 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
     receitasQueijo = Mealsapi().listarReceitasPorIngrediente('cheese');
   }
 
+  double notaAleatoria() {
+    final nota = Random();
+    return 3.0 + nota.nextDouble() * 2.0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
         children: [
           buildSecoes(secao: 'RECEITAS COM FRANGO'),
-          buildListView(receitasGalinha),
+          buildFutureBuilder(receitasGalinha),
           buildSecoes(secao: 'RECEITAS COM OVOS'),
-          buildListView(receitasOvo),
+          buildFutureBuilder(receitasOvo),
           buildSecoes(secao: 'RECEITAS COM ARROZ'),
-          buildListView(receitasArroz),
+          buildFutureBuilder(receitasArroz),
           buildSecoes(secao: 'RECEITAS COM QUEIJO'),
-          buildListView(receitasQueijo),
+          buildFutureBuilder(receitasQueijo),
         ]
     );
   }
-  Widget buildSecoes({
-    required String secao
-  }){
+
+  Widget buildSecoes({required String secao}){
     return Padding(
       padding: EdgeInsets.all(12),
       child: Text(
@@ -59,27 +63,32 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
     );
   }
   
-  buildListView(Future<List<Meals>> listafuture) {
+  buildFutureBuilder(Future<List<Meals>> listafuture) {
     return SizedBox(
       height: 200,
+
       child: FutureBuilder(
         future: listafuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Meals> listaMeals = snapshot.requireData;
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              itemCount: listaMeals.length,
-              itemBuilder: (context, i) {
-                return buildReceitas(meal: listaMeals[i]);
-              }
-            );
+            return buildListView(listaMeals);
           }
           
           return Center(child: CircularProgressIndicator());
         }
       )
+    );
+  }
+
+  buildListView(listaMeals) {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
+        itemCount: listaMeals.length,
+        itemBuilder: (context, i) {
+          return buildReceitas(meal: listaMeals[i]);
+        }
     );
   }
 
@@ -130,18 +139,18 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 15.0,
-                            color: Color(0xFF002566),
+                            color: Color(0xFF1800ad),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       SizedBox(width: 2),
                       Text(
-                        meal.rate.toStringAsFixed(1),
+                        notaAleatoria().toStringAsFixed(1),
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF002566),
+                          color: Color(0xFF1800ad),
                         ),
                       ),
                       Icon(Icons.star_half_outlined, size: 16, color: Color(0xFF1800ad)),

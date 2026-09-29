@@ -26,24 +26,7 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF1800ad),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back, color: Colors.white)
-          ),
-          title: Text(
-            widget.categoria.categoria,
-            style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Allison',
-                fontSize: 40,
-                fontWeight: FontWeight.bold
-            ),
-          ),
-        ),
+        appBar: buildAppBar(),
         body: FutureBuilder(
           future: futureListaReceitasCategoria,
           builder: (context, snapshot) {
@@ -58,6 +41,27 @@ class _ReceitasCategoriaState extends State<ReceitasCategoria> {
             return Center(child: CircularProgressIndicator());
           }
         )
+    );
+  }
+
+  buildAppBar() {
+    return AppBar(
+      backgroundColor: Color(0xFF1800ad),
+      leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.white)
+      ),
+      title: Text(
+        widget.categoria.categoria,
+        style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Allison',
+            fontSize: 40,
+            fontWeight: FontWeight.bold
+        ),
+      ),
     );
   }
 

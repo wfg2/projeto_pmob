@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/meals.dart';
 import 'package:projeto/paginas/detail_page.dart';
+import 'dart:math';
 
 class ContainerMeals extends StatefulWidget {
   Meals meals;
@@ -11,6 +12,12 @@ class ContainerMeals extends StatefulWidget {
 }
 
 class _ContainerMealsState extends State<ContainerMeals> {
+
+  double notaAleatoria() {
+    final nota = Random();
+    return 3.0 + nota.nextDouble() * 2.0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -82,7 +89,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                           Row(
                             children: [
                               Text(
-                                  widget.meals.rate.toStringAsFixed(1),
+                                  notaAleatoria().toStringAsFixed(1),
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.0,

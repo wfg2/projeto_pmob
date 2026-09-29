@@ -21,78 +21,25 @@ class _TelaExplorarState extends State<TelaExplorar> {
     futureListaMeals = Future.value([]);
   }
 
-  Future<void> onPressed() async {
+  onPressed() {
     String nome = buscar.text;
 
-    setState(() {
-      futureListaMeals = Mealsapi().listarReceitasPorNome(nome);
-    });
+    if (nome.isNotEmpty) {
+      setState(() {
+        futureListaMeals = Mealsapi().listarReceitasPorNome(nome);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Color(0xFF1800ad),
-            leading: Icon(Icons.restaurant, color: Colors.white, size: 30),
-            title: Text(
-              'Explorar',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Allison',
-                fontSize: 40,
-                fontWeight: FontWeight.bold
-              )
-            ),
-        ),
-
+        appBar: buildAppBar(),
         body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: TextField(
-                controller: buscar,
-                onSubmitted: (valor) => onPressed(),
-                decoration: InputDecoration(
-                  focusColor: Color(0xFF1800ad),
-                    prefixIcon: IconButton(
-                      icon: Icon(Icons.search,
-                          color: Color(0xFF1800ad)),
-                      onPressed: onPressed,
-                    ),
-
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.clear,
-                          color: Color(0xFF1800ad)),
-                      onPressed: () {
-                        setState(() {
-                          buscar.clear();
-                          futureListaMeals = Future.value([]);
-                        });
-                      },
-                    ),
-
-                    hintText: 'O que você está procurando?',
-                    hintStyle: TextStyle(
-                        color: Color(0xFF002566),
-                        fontSize: 16.0,
-                        fontFamily: 'Montserrat'
-                    ),
-
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24.0),
-                    )
-                ),
-
-                style: TextStyle(
-                  color: Color(0xFF002566),
-                  fontSize: 16.0,
-                  fontFamily: 'Montserrat',
-
-                ),
-              ),
+              child: buildTextField()
             ),
 
             Expanded(
@@ -102,6 +49,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
                   if (snapshot.hasError) {
                     return Center(child: Text('Erro ao carregar dados'));
                   }
+
                   if (snapshot.hasData) {
                     List<Meals> listaMeals = snapshot.requireData;
 
@@ -117,6 +65,69 @@ class _TelaExplorarState extends State<TelaExplorar> {
             ),
           ],
         )
+    );
+  }
+
+  buildAppBar() {
+    return AppBar(
+      backgroundColor: Color(0xFF1800ad),
+      leading: Icon(Icons.restaurant, color: Colors.white, size: 30),
+      title: Text(
+          'Explorar',
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Allison',
+              fontSize: 40,
+              fontWeight: FontWeight.bold
+          )
+      ),
+    );
+  }
+
+  buildTextField() {
+    return TextField(
+      controller: buscar,
+      onSubmitted: (valor) => onPressed(),
+      decoration: InputDecoration(
+
+          focusColor: Color(0xFF1800ad),
+          prefixIcon: IconButton(
+            icon: Icon(Icons.search,
+                color: Color(0xFF1800ad)),
+            onPressed: onPressed,
+          ),
+
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear,
+                color: Color(0xFF1800ad)),
+            onPressed: () {
+              setState(() {
+                buscar.clear();
+                futureListaMeals = Future.value([]);
+              });
+            },
+          ),
+
+          hintText: 'O que você está procurando?',
+          hintStyle: TextStyle(
+              color: Color(0xFF002566),
+              fontSize: 16.0,
+              fontFamily: 'Montserrat'
+          ),
+
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(24.0),
+          )
+      ),
+
+      style: TextStyle(
+        color: Color(0xFF1800ad),
+        fontSize: 16.0,
+        fontFamily: 'Montserrat',
+
+      ),
     );
   }
 

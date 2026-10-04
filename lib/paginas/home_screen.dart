@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projeto/paginas/pagina_explorar.dart';
 import 'package:projeto/paginas/pagina_categoria.dart';
 
@@ -43,7 +44,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        toolbarHeight: 30,
+        backgroundColor: Color(0xFF1800ad),
+        flexibleSpace: SvgPicture.asset('fontes/appbarlayout.svg', fit: BoxFit.cover)
+      ),
       body: pages[selectedIndex],
       bottomNavigationBar: buildBottomNavBar(),
 
@@ -52,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildBottomNavBar(){
     return BottomNavigationBar(
-      backgroundColor: Color(0xFF1800ad),
+      backgroundColor: Color(0xFF2113FE),
       currentIndex: selectedIndex,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,

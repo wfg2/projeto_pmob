@@ -54,7 +54,7 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
       child: Text(
         secao,
         style: TextStyle(
-            color: Color(0xFF1800ad),
+            color: Color(0xFF2113FE),
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
             fontFamily: 'Oswald'
@@ -139,7 +139,7 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 15.0,
-                            color: Color(0xFF1800ad),
+                            color: Color(0xFF2113FE),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -150,10 +150,10 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF1800ad),
+                          color: Color(0xFF2113FE),
                         ),
                       ),
-                      Icon(Icons.star_half_outlined, size: 16, color: Color(0xFF1800ad)),
+                      Icon(Icons.star_half_outlined, size: 16, color: Color(0xFF2113FE)),
                     ],
                   ),
                   SizedBox(height: 4),
@@ -168,7 +168,7 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 13.0,
-                            color: Color(0xFF1800ad),
+                            color: Color(0xFF2113FE),
                           ),
                         ),
                       ),

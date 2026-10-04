@@ -25,11 +25,13 @@ class _TelaCategoriaState extends State<TelaCategoria> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(),
-
       body: FutureBuilder (
         future: futureListaCategorias,
         builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Erro ao carregar categorias: ${snapshot.error}'));
+          }
+
           if (snapshot.hasData) {
             List<Categoria> listarCategorias = snapshot.requireData;
             return buildListView(listarCategorias);
@@ -38,22 +40,6 @@ class _TelaCategoriaState extends State<TelaCategoria> {
           return Center(child: CircularProgressIndicator());
         }
       )
-    );
-  }
-
-  buildAppBar() {
-    return AppBar(
-        backgroundColor: Color(0xFF1800ad),
-        leading: Icon(Icons.fastfood, color: Colors.white, size: 30,),
-        title: Text(
-          'Categorias',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Allison',
-              fontSize: 40,
-              fontWeight: FontWeight.bold
-          ),
-        )
     );
   }
 

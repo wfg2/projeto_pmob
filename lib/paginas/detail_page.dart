@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'dart:math';
 import 'package:projeto/domain/meals.dart';
 import '../api/meals_api.dart';
 
@@ -19,203 +21,207 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: ListView(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: Container(
+      body: buildListView(),
+    );
+  }
+
+  buildListView() {
+    return ListView(
+      children: [
+         Stack(
+           children: [
+             // imagem
+             Image.network(
+              widget.meals.urlImagem,
               height: 200,
               width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 2),
-                  ),
+              fit: BoxFit.cover,
+            ),
+
+             // page view
+             Positioned(
+               bottom: 8,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.horizontal_rule, color: Colors.white, size: 28),
+                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
+                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
+                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
                 ],
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.all(
-                  Radius.circular(13)
-                ),
-                child: Image.network(
-                  widget.meals.urlImagem,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+             )
+          ]
+         ),
+
+        Padding(
+          padding: EdgeInsets.only(top: 12, bottom: 12, left: 12, right: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // nome da receita
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                        widget.meals.nome,
+                        style: TextStyle(
+                          color: Color(0xFF2113FE),
+                          fontFamily: 'Oswald',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+
+                        )
+                    ),
+                  ),
+                  Icon(Icons.favorite_border, color: Color(0xFF2113FE), size: 28),
+                ],
+              ),
+              SizedBox(height: 6),
+
+              // info estrelas
+              Row(
+                children: [
+                  Icon(Icons.star, color: Color(0xFF2113FE), size: 20),
+                  Icon(Icons.star, color: Color(0xFF2113FE), size: 20),
+                  Icon(Icons.star, color: Color(0xFF2113FE), size: 20),
+                  Icon(Icons.star, color: Color(0xFF2113FE), size: 20),
+                  Icon(Icons.star_half, color: Color(0xFF2113FE), size: 20),
+                  SizedBox(width: 6),
+                  Text(
+                    (3 + Random().nextDouble() * 2).toStringAsFixed(1),
+                    style: TextStyle(
+                      letterSpacing: 1,
+                      fontFamily: 'Montserrat',
+                      fontSize: 14,
+                      color: Color(0xFF2113FE),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 10),
+
+              buildInfoGerais(),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 12.0, right: 12, bottom: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              // title
+              Padding(
+                padding: EdgeInsets.only(top: 8, bottom: 6),
+                child: Text(
+                    'Ingredientes Principais',
+                    style: TextStyle(
+                        fontFamily: 'Oswald',
+                        fontSize: 22,
+                        color: Color(0xFF2113FE),
+                        fontWeight: FontWeight.bold
+                    )
                 ),
               ),
-            ),
-          ),
 
-          Padding(
-            padding: EdgeInsets.only(top: 12, bottom: 12, left: 12, right: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'INFORMAÇÕES GERAIS:',
-                  style: TextStyle(
-                      color: Color(0xFF1800ad),
-                      fontFamily: 'Oswald',
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold
-                  )
-                ),
-                SizedBox(height: 6),
-                buildInfoGerais(),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(left: 12.0, right: 12, bottom: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Padding(
-                  padding: EdgeInsets.only(top: 8, bottom: 6),
-                  child: Text(
-                    'INGREDIENTES PRINCIPAIS:',
-                    style: TextStyle(
-                      fontFamily: 'Oswald',
-                      fontSize: 25,
-                      color: Color(0xFF1800ad),
-                      fontWeight: FontWeight.bold
-                    )
-                  ),
-                ),
-
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
+              // ingredientes
+              Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
                   children: [
                     for (int i = 0; i < widget.meals.ingredientes.length; i++)
                       ingredienteBox(
                           widget.meals.ingredientes[i],
                           widget.meals.medidas[i]),
                   ]
+              ),
+
+              // title
+              Padding(
+                padding: EdgeInsets.only(top: 24, bottom: 6),
+                child: Text(
+                    'Modo de Preparo',
+                    style: TextStyle(
+                        color: Color(0xFF2113FE),
+                        fontFamily: 'Oswald',
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
+                    )
                 ),
-
-                Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 6),
-                  child: Text(
-                    'MODO DE PREPARO:',
-                      style: TextStyle(
-                      color: Color(0xFF1800ad),
-                      fontFamily: 'Oswald',
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold
-                      )
-                  ),
-                ),
-                SizedBox(height: 6),
-                textbox(widget.meals.instrucoes)
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  buildInfoGerais() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 14),
-      decoration: BoxDecoration(
-        color: Color(0xFFedeaff),
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade400,
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: Offset(0, 1.5),
-          )
-        ]
-      ),
-
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          buildInfos(
-            icon: Icon(Icons.restaurant_menu, size: 16, color: Color(0xFF303f9f)),
-            text: 'Categoria:',
-            valor: widget.meals.categoria,
-          ),
-          Container(
-            width: 1,
-            height: 40,
-            color: Color(0xFF3f51b5),
-          ),
-          buildInfos(
-            icon: Icon(Icons.flag, size: 16, color: Color(0xFF303f9f)),
-            text: 'País:',
-            valor: widget.meals.pais,
-          )
-        ]
-      )
-    );
-  }
-
-  buildInfos({required Icon icon, required String text, required String valor}) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            icon,
-            SizedBox(width: 6),
-            Text(
-              text,
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 15,
-                  color: Color(0xFF1800ad),
-                  fontWeight: FontWeight.w600
-                ),
-            )
-          ],
-        ),
-        SizedBox(height: 6),
-        Text(
-          valor,
-          style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 15,
-            color: Color(0xFF1800ad),
+              ),
+              SizedBox(height: 6),
+              textbox(widget.meals.instrucoes)
+            ],
           ),
         )
       ],
     );
   }
 
-  textbox(String text) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Color(0xFFedeaff),
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade400,
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: Offset(0, 1.5),
+  buildInfoGerais() {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          buildInfos(
+            icon: Icon(Icons.restaurant_menu_outlined, size: 14, color: Color(0xFF2113FE)),
+            text: 'Categoria: ',
+            valor: widget.meals.categoria,
+          ),
+          buildInfos(
+            icon: Icon(Icons.flag_outlined, size: 14, color: Color(0xFF2113FE)),
+            text: 'País: ',
+            valor: widget.meals.pais,
           )
         ]
+      );
+  }
+
+  buildInfos({required Icon icon, required String text, required String valor}) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+      decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: Color(0xFF2113FE),
+            width: 1,
+          )
       ),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Text(
-          text,
-          style: textStyle(15),
-          textAlign: TextAlign.justify,
-        ),
-      ),
+      child: Row(
+            children: [
+              icon,
+              SizedBox(width: 6),
+              Text(
+                text,
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 12,
+                    color: Color(0xFF2113FE),
+                    fontWeight: FontWeight.w600
+                  ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                valor,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 12,
+                  color: Color(0xFF2113FE),
+                ),
+              )
+            ],
+          ),
+      );
+  }
+
+  textbox(String text) {
+    return Text(
+      text,
+      style: textStyle(12),
+      textAlign: TextAlign.justify,
     );
   }
   
@@ -227,42 +233,37 @@ class _DetailPageState extends State<DetailPage> {
       height: 80,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xFFedeaff),
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade400,
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: Offset(0, 1),
-          )
-        ]
-      ),
+        color: Colors.transparent,
+        border: Border(
+          bottom: BorderSide(
+            color: Color(0xFF2113FE),
+            width: 1,
+          ),
+        ),
+        ),
       child: Row(
         children: [
-          Image.network(
-            imageUrl,
-            width: 80,
-            height: 80,
-            fit: BoxFit.contain
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
+            child: Image.network(
+              imageUrl,
+              width: 60,
+              height: 60,
+              fit: BoxFit.cover
+            ),
           ),
-          SizedBox(width: 10),
-          Container(
-            width: 1,
-            height: 40,
-            color: Color(0xFF3f51b5),
-          ),
-          SizedBox(width: 14),
           Expanded(
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$nomeIngrediente: ',
+                  nomeIngrediente,
                   style: TextStyle(
+                    letterSpacing: 1,
                     fontFamily: 'Montserrat',
-                    fontSize: 16,
-                    color: Color(0xFF303f9f),
+                    fontSize: 14,
+                    color: Color(0xFF2113FE),
                     fontWeight: FontWeight.w600
                   ),
                   maxLines: 1,
@@ -271,9 +272,10 @@ class _DetailPageState extends State<DetailPage> {
                 Text(
                   medida,
                   style: TextStyle(
+                    letterSpacing: 1,
                     fontFamily: 'Montserrat',
-                    fontSize: 15,
-                    color: Color(0xFF303f9f),
+                    fontSize: 12,
+                    color: Color(0xFF2113FE),
                     fontWeight: FontWeight.w500
                   ),
                   maxLines: 1,
@@ -291,29 +293,23 @@ class _DetailPageState extends State<DetailPage> {
     return TextStyle(
         fontFamily: 'Montserrat',
         fontSize: size,
-        color: Color(0xFF303f9f),
+        color: Color(0xFF2113FE),
+      letterSpacing: 1.5
     );
   }
 
   buildAppBar() {
     return AppBar(
+      toolbarHeight: 30,
       backgroundColor: Color(0xFF1800ad),
+      flexibleSpace: SvgPicture.asset('fontes/appbararrow.svg', fit: BoxFit.cover),
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back, color: Colors.white)
-      ),
-      centerTitle: true,
-      title: Text(
-        widget.meals.nome,
-        style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Allison',
-            fontSize: 40,
-            fontWeight: FontWeight.bold
-        ),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.transparent)
       ),
     );
   }
+
 }

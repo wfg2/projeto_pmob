@@ -34,7 +34,6 @@ class _TelaExplorarState extends State<TelaExplorar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(),
         body: Column(
           children: [
             Padding(
@@ -68,38 +67,22 @@ class _TelaExplorarState extends State<TelaExplorar> {
     );
   }
 
-  buildAppBar() {
-    return AppBar(
-      backgroundColor: Color(0xFF1800ad),
-      leading: Icon(Icons.restaurant, color: Colors.white, size: 30),
-      title: Text(
-          'Explorar',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Allison',
-              fontSize: 40,
-              fontWeight: FontWeight.bold
-          )
-      ),
-    );
-  }
-
   buildTextField() {
     return TextField(
       controller: buscar,
       onSubmitted: (valor) => onPressed(),
       decoration: InputDecoration(
 
-          focusColor: Color(0xFF1800ad),
+          focusColor: Color(0xFF2113FE),
           prefixIcon: IconButton(
             icon: Icon(Icons.search,
-                color: Color(0xFF1800ad)),
+                color: Color(0xFF2113FE)),
             onPressed: onPressed,
           ),
 
           suffixIcon: IconButton(
             icon: Icon(Icons.clear,
-                color: Color(0xFF1800ad)),
+                color: Color(0xFF2113FE)),
             onPressed: () {
               setState(() {
                 buscar.clear();
@@ -110,7 +93,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
 
           hintText: 'O que você está procurando?',
           hintStyle: TextStyle(
-              color: Color(0xFF002566),
+              color: Color(0xFF2113FE),
               fontSize: 16.0,
               fontFamily: 'Montserrat'
           ),
@@ -123,7 +106,7 @@ class _TelaExplorarState extends State<TelaExplorar> {
       ),
 
       style: TextStyle(
-        color: Color(0xFF1800ad),
+        color: Color(0xFF2113FE),
         fontSize: 16.0,
         fontFamily: 'Montserrat',
 

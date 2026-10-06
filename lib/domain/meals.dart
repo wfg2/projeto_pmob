@@ -1,3 +1,4 @@
+import 'dart:math';
 class Meals {
   final String nome;
   final String urlImagem;
@@ -6,6 +7,7 @@ class Meals {
   final String instrucoes;
   final List<String> ingredientes;
   final List<String> medidas;
+  final double avaliacao;
 
   Meals({
     required this.nome,
@@ -14,7 +16,8 @@ class Meals {
     required this.pais,
     required this.instrucoes,
     required this.ingredientes,
-    required this.medidas
+    required this.medidas,
+    required this.avaliacao
 });
 
   factory Meals.fromJson(Map<String, dynamic> json) {
@@ -25,17 +28,16 @@ class Meals {
       pais: json['strCountry'] ?? '',
       instrucoes: json['strInstructions'] ?? '',
       ingredientes: [
-        json['strIngredient1'] ?? '',
-        json['strIngredient2'] ?? '',
-        json['strIngredient3'] ?? '',
-        json['strIngredient4'] ?? ''
+        for (int i = 1; i < 21; i++)
+          if ((json['strIngredient$i'] ?? '').toString().trim().isNotEmpty)
+            json['strIngredient$i']
       ],
       medidas: [
-        json['strMeasure1'] ?? '',
-        json['strMeasure2'] ?? '',
-        json['strMeasure3'] ?? '',
-        json['strMeasure4'] ?? ''
-      ]
+        for (int i = 1; i < 21; i++)
+          if ((json['strMeasure$i'] ?? '').toString().trim().isNotEmpty)
+            json['strMeasure$i']
+      ],
+      avaliacao: double.parse((3.5 + Random().nextDouble() * 1.5).toStringAsFixed(1))
     );
   }
 }

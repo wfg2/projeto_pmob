@@ -35,7 +35,7 @@ class Mealsapi {
   }
 
   String imagemIngrediente(String ingrediente) {
-    final nome = ingrediente.replaceAll(' ', '_');
+    final nome = ingrediente.replaceAll(' ', '_').toLowerCase();
     return '$imageUrl/$nome.png';
   }
 }

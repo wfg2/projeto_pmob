@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:projeto/api/meals_api.dart';
-import 'dart:math';
 import '../domain/meals.dart';
 
 class ReceitasPadrao extends StatefulWidget {
@@ -25,11 +24,6 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
     receitasOvo = Mealsapi().listarReceitasPorIngrediente('eggs');
     receitasArroz = Mealsapi().listarReceitasPorIngrediente('rice');
     receitasQueijo = Mealsapi().listarReceitasPorIngrediente('cheese');
-  }
-
-  double notaAleatoria() {
-    final nota = Random();
-    return 3.0 + nota.nextDouble() * 2.0;
   }
 
   @override
@@ -139,21 +133,21 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 15.0,
-                            color: Color(0xFF2113FE),
+                            color: Color(0xFF252B9E),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       SizedBox(width: 2),
                       Text(
-                        notaAleatoria().toStringAsFixed(1),
+                        meal.avaliacao.toStringAsFixed(1),
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF2113FE),
+                          color: Color(0xFF252B9E),
                         ),
                       ),
-                      Icon(Icons.star_half_outlined, size: 16, color: Color(0xFF2113FE)),
+                      Icon(Icons.star_half_outlined, size: 16, color: Color(0xFF252B9E)),
                     ],
                   ),
                   SizedBox(height: 4),
@@ -168,7 +162,7 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 13.0,
-                            color: Color(0xFF2113FE),
+                            color: Color(0xFF5C6B9C),
                           ),
                         ),
                       ),

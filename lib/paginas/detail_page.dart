@@ -46,10 +46,10 @@ class _DetailPageState extends State<DetailPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.horizontal_rule, color: Colors.white, size: 28),
-                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
-                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
-                  Icon(Icons.horizontal_rule, color: Colors.white, size: 24),
+                  Icon(Icons.horizontal_rule_rounded, color: Colors.white, size: 32),
+                  Icon(Icons.horizontal_rule_rounded, color: Colors.white, size: 24),
+                  Icon(Icons.horizontal_rule_rounded, color: Colors.white, size: 24),
+                  Icon(Icons.horizontal_rule_rounded, color: Colors.white, size: 24),
                 ],
               ),
              )
@@ -70,13 +70,13 @@ class _DetailPageState extends State<DetailPage> {
                         style: TextStyle(
                           color: Color(0xFF2113FE),
                           fontFamily: 'Oswald',
-                          fontSize: 24,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
 
                         )
                     ),
                   ),
-                  Icon(Icons.favorite_border, color: Color(0xFF2113FE), size: 28),
+                  Icon(Icons.favorite_border_rounded, color: Color(0xFF2113FE), size: 32),
                 ],
               ),
               SizedBox(height: 6),
@@ -91,7 +91,7 @@ class _DetailPageState extends State<DetailPage> {
                   Icon(Icons.star_half, color: Color(0xFF2113FE), size: 20),
                   SizedBox(width: 6),
                   Text(
-                    (3 + Random().nextDouble() * 2).toStringAsFixed(1),
+                    widget.meals.avaliacao.toStringAsFixed(1),
                     style: TextStyle(
                       letterSpacing: 1,
                       fontFamily: 'Montserrat',
@@ -114,13 +114,14 @@ class _DetailPageState extends State<DetailPage> {
             children: [
 
               // title
+
               Padding(
-                padding: EdgeInsets.only(top: 8, bottom: 6),
+                padding: EdgeInsets.only(top: 12, bottom: 6),
                 child: Text(
                     'Ingredientes Principais',
                     style: TextStyle(
                         fontFamily: 'Oswald',
-                        fontSize: 22,
+                        fontSize: 24,
                         color: Color(0xFF2113FE),
                         fontWeight: FontWeight.bold
                     )
@@ -147,7 +148,7 @@ class _DetailPageState extends State<DetailPage> {
                     style: TextStyle(
                         color: Color(0xFF2113FE),
                         fontFamily: 'Oswald',
-                        fontSize: 22,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold
                     )
                 ),
@@ -166,12 +167,12 @@ class _DetailPageState extends State<DetailPage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           buildInfos(
-            icon: Icon(Icons.restaurant_menu_outlined, size: 14, color: Color(0xFF2113FE)),
+            icon: Icon(Icons.restaurant_menu_outlined, size: 14, color: Color(0xFF5C6B9C)),
             text: 'Categoria: ',
             valor: widget.meals.categoria,
           ),
           buildInfos(
-            icon: Icon(Icons.flag_outlined, size: 14, color: Color(0xFF2113FE)),
+            icon: Icon(Icons.flag_outlined, size: 14, color: Color(0xFF5C6B9C)),
             text: 'País: ',
             valor: widget.meals.pais,
           )
@@ -180,47 +181,50 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   buildInfos({required Icon icon, required String text, required String valor}) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-      decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: Color(0xFF2113FE),
-            width: 1,
-          )
-      ),
-      child: Row(
-            children: [
-              icon,
-              SizedBox(width: 6),
-              Text(
-                text,
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(
+              color: Color(0xFF5C6B9C),
+              width: 1,
+            )
+        ),
+        child: Row(
+              children: [
+                icon,
+                SizedBox(width: 6),
+                Text(
+                  text,
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 12,
+                      color: Color(0xFF5C6B9C),
+                      fontWeight: FontWeight.w600
+                    ),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  valor,
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 12,
-                    color: Color(0xFF2113FE),
-                    fontWeight: FontWeight.w600
+                    color: Color(0xFF5C6B9C),
                   ),
-              ),
-              SizedBox(height: 6),
-              Text(
-                valor,
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 12,
-                  color: Color(0xFF2113FE),
-                ),
-              )
-            ],
-          ),
-      );
+                )
+              ],
+            ),
+        ),
+    );
   }
 
   textbox(String text) {
     return Text(
       text,
-      style: textStyle(12),
+      style: textStyle(14),
       textAlign: TextAlign.justify,
     );
   }
@@ -236,7 +240,7 @@ class _DetailPageState extends State<DetailPage> {
         color: Colors.transparent,
         border: Border(
           bottom: BorderSide(
-            color: Color(0xFF2113FE),
+            color: Color(0xFFC1C5E6),
             width: 1,
           ),
         ),
@@ -244,12 +248,26 @@ class _DetailPageState extends State<DetailPage> {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.0),
-            child: Image.network(
-              imageUrl,
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover
+            padding: EdgeInsets.symmetric(horizontal: 14.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFC1C5E6),
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Image.network(
+                imageUrl,
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+
+              ),
             ),
           ),
           Expanded(
@@ -263,7 +281,7 @@ class _DetailPageState extends State<DetailPage> {
                     letterSpacing: 1,
                     fontFamily: 'Montserrat',
                     fontSize: 14,
-                    color: Color(0xFF2113FE),
+                    color: Color(0xFF252B9E),
                     fontWeight: FontWeight.w600
                   ),
                   maxLines: 1,
@@ -275,7 +293,7 @@ class _DetailPageState extends State<DetailPage> {
                     letterSpacing: 1,
                     fontFamily: 'Montserrat',
                     fontSize: 12,
-                    color: Color(0xFF2113FE),
+                    color: Color(0xFF3F499C),
                     fontWeight: FontWeight.w500
                   ),
                   maxLines: 1,
@@ -293,7 +311,7 @@ class _DetailPageState extends State<DetailPage> {
     return TextStyle(
         fontFamily: 'Montserrat',
         fontSize: size,
-        color: Color(0xFF2113FE),
+        color: Color(0xFF3F499C),
       letterSpacing: 1.5
     );
   }
@@ -307,7 +325,7 @@ class _DetailPageState extends State<DetailPage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.transparent)
+          icon: Icon(Icons.arrow_back_ios, color: Colors.transparent, size: 50)
       ),
     );
   }

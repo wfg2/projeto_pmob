@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/db/shared_prefs.dart';
+import 'package:projeto/db/userDAO.dart';
 import 'package:projeto/pages/cadastro_page.dart';
 import 'package:projeto/pages/home_screen.dart';
 import 'package:projeto/api/user_api.dart';
@@ -164,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    bool isAuth = await UserApi().login(username, password);
+    bool isAuth = await UserDao().login(username, password);
     
     if (isAuth) {
       await prefs.setUserStatus(true);

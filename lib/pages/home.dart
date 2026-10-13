@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/api/PostReceita_api.dart';
+import 'package:projeto/db/PostReceitaDAO.dart';
 import 'package:projeto/domain/post_receita.dart';
 import 'package:projeto/pages/login_page.dart';
 import 'package:projeto/widget/container_posts.dart';
@@ -20,7 +21,7 @@ class _homeState extends State<home> {
   @override
   void initState() {
     super.initState();
-    futureListaPosts = PostReceitaApi().listarPostReceitas();
+    futureListaPosts = PostReceitaDao().listarPostReceitas();
   }
 
   @override

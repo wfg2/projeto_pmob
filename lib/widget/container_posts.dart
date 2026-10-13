@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/card_detalhes.dart';
 import 'package:projeto/domain/post_receita.dart';
+import 'package:projeto/pages/maps_page.dart';
 import 'package:projeto/widget/container_detalhes.dart';
 
 class ContainerPosts extends StatefulWidget {
@@ -85,6 +86,25 @@ class _ContainerPostsState extends State<ContainerPosts> {
               style: TextStyle(
                   fontSize: 14, fontFamily: 'Montserrat-Regular')),
           SizedBox(height: 12),
+          InkWell(
+            onTap: () {
+              setState(() {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MapsPage())
+                    );
+              });
+            },
+            child: Text(
+                'VER PAÍS DE ORIGEM DO PRATO',
+                style: TextStyle(
+                    color: Color(0xFF0a27eb),
+                    fontFamily: 'Montserrat-Regular',
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          SizedBox(height: 10),
           ContainerDetalhes(cardDetalhes: CardDetalhes(
               nomereceita: widget.postReceita.nomereceita,
               temporeceita: widget.postReceita.temporeceita,

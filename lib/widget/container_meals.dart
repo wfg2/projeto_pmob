@@ -83,7 +83,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                           Row(
                             children: [
                               Text(
-                                  widget.meals.avaliacao.toStringAsFixed(1),
+                                  widget.meals.avaliacao,
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.0,

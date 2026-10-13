@@ -7,7 +7,7 @@ class Meals {
   final String instrucoes;
   final List<String> ingredientes;
   final List<String> medidas;
-  final double avaliacao;
+  final String avaliacao;
 
   Meals({
     required this.nome,
@@ -37,7 +37,7 @@ class Meals {
           if ((json['strMeasure$i'] ?? '').toString().trim().isNotEmpty)
             json['strMeasure$i']
       ],
-      avaliacao: double.parse((3.5 + Random().nextDouble() * 1.5).toStringAsFixed(1))
+      avaliacao: (3.5 + Random().nextDouble() * 1.5).toStringAsFixed(1)
     );
   }
 }

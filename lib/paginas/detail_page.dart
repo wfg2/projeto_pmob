@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
 import 'package:projeto/domain/meals.dart';
 import '../api/meals_api.dart';
 
@@ -91,7 +90,7 @@ class _DetailPageState extends State<DetailPage> {
                   Icon(Icons.star_half, color: Color(0xFF2113FE), size: 20),
                   SizedBox(width: 6),
                   Text(
-                    widget.meals.avaliacao.toStringAsFixed(1),
+                    widget.meals.avaliacao,
                     style: TextStyle(
                       letterSpacing: 1,
                       fontFamily: 'Montserrat',

@@ -140,7 +140,7 @@ class _ReceitasPadraoState extends State<ReceitasPadrao> {
                       ),
                       SizedBox(width: 2),
                       Text(
-                        meal.avaliacao.toStringAsFixed(1),
+                        meal.avaliacao,
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,

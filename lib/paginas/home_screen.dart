@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:projeto/paginas/map_sample.dart';
 import 'package:projeto/paginas/pagina_explorar.dart';
 import 'package:projeto/paginas/pagina_categoria.dart';
 
@@ -31,14 +32,7 @@ class _HomePageState extends State<HomePage> {
           ),
         )
     ),
-    Center(
-      child: Text(
-        'Perfil',
-        style: TextStyle(
-          fontSize: 32
-        ),
-      ),
-    )
+    MapSample()
   ];
 
   @override
@@ -87,9 +81,9 @@ class _HomePageState extends State<HomePage> {
             label: 'Favoritos',
             activeIcon: Icon(Icons.favorite)),
         BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Perfil',
-            activeIcon: Icon(Icons.person)),
+            icon: Icon(Icons.public_outlined),
+            label: 'Mapas',
+            activeIcon: Icon(Icons.public)),
       ],
     );
   }

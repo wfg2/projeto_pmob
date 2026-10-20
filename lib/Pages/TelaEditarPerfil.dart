@@ -128,7 +128,32 @@ class _TelaEditarPerfilState extends State<TelaEditarPerfil> {
               ),
             ),
           ),
-        ),)
+        ),
+      ),
+
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF1800ad),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+
+
+            ),
+            onPressed: () {},
+            child: Text(
+              'Salvar Alterações',
+              style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+
+            ),
+          ),
+        ),
+      )
 
     ],
       ),

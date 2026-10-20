@@ -1,6 +1,5 @@
 import 'package:projeto/domain/receitaFavorita.dart';
 import 'package:sqflite/sqflite.dart';
-
 import 'db_helper.dart';
 
 class FavoritosDao {
@@ -10,10 +9,12 @@ class FavoritosDao {
     var result = await db.rawQuery('SELECT * FROM RECEITAFAV');
 
     List<ReceitaFavorita> lista = [];
+
     for (var json in result){
       ReceitaFavorita receitaFavorita = ReceitaFavorita.fromJson(json);
       lista.add(receitaFavorita);
   }
+    await Future.delayed(Duration(seconds: 5));
     return lista;
   }
 }

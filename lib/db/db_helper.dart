@@ -6,7 +6,6 @@ class DbHelper {
   Future<Database> initDB() async{
     String path = await getDatabasesPath();
     String dbName = 'dendeJ.db';
-
     String dbPath = join(path, dbName);
 
     Database db = await openDatabase(dbPath, version: 1, onCreate: onCreateDB);
@@ -47,7 +46,7 @@ class DbHelper {
     await db.execute(sql);
 
     sql =
-        "INSERT INTO RECEITAFAV (foto_Receita, nome_Receita) VALUES ('https://www.ajinomotofoodservice.com.br/wp/content/uploads/receitas/tacaca-com-tucupi-1920x1080-23-01-2025-2oz41.webp', 'Tacacá');";
+        "INSERT INTO RECEITAFAV (foto_Receita, nome_Receita) VALUES ('https://www.ajinomotofoodservice.com.br/wp/content/uploads/receitas/tacaca-com-tucupi-1920x1080-23-01-2025-2oz41.webp', 'Tacacá com Tucupi');";
     await db.execute(sql);
 
     sql =

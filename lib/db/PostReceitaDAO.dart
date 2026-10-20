@@ -1,4 +1,4 @@
-import 'package:projeto/domain/post_receita.dart';
+import 'package:projeto_pmob/domain/post_receita.dart';
 import 'package:sqflite/sqflite.dart';
 import 'db_helper.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/domain/pagina_detalhes.dart';
+import 'package:projeto_pmob/domain/pagina_detalhes.dart';
 
 class detalhes extends StatefulWidget {
   PaginaDetalhes paginaDetalhes;

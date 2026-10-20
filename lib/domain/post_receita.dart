@@ -18,27 +18,33 @@ class PostReceita {
   late List<String> ingredientes;
   late List<String> preparo;
 
-  PostReceita({
-  required this.fotodeperfil,
-  required this.nomeusuario,
-  required this.dataehora,
-  // post
-  required this.fotopost,
-  required this.legenda,
-  required this.likes,
-  required this.comentarios,
-  required this.compartilhamentos,
-  // receita
-  required this.nomereceita,
-  required this.temporeceita,
-  required this.nivelreceita,
-  required this.fotoreceita,
+  // localização
+  late double latitude;
+  late double longitude;
 
-  required this.ingredientes,
-  required this.preparo
+  PostReceita({
+    required this.fotodeperfil,
+    required this.nomeusuario,
+    required this.dataehora,
+    // post
+    required this.fotopost,
+    required this.legenda,
+    required this.likes,
+    required this.comentarios,
+    required this.compartilhamentos,
+    // receita
+    required this.nomereceita,
+    required this.temporeceita,
+    required this.nivelreceita,
+    required this.fotoreceita,
+    required this.ingredientes,
+    required this.preparo,
+    // localização
+    required this.latitude,
+    required this.longitude,
   });
 
-  PostReceita.fromJson(Map<String, dynamic> json){
+  PostReceita.fromJson(Map<String, dynamic> json) {
     fotodeperfil = json['fotodeperfil'];
     nomeusuario = json['nomeusuario'];
     dataehora = json['dataehora'];
@@ -56,5 +62,8 @@ class PostReceita {
 
     ingredientes = (json['ingredientes'] as String?)?.split('|||') ?? [];
     preparo = (json['preparo'] as String?)?.split('|||') ?? [];
+
+    latitude = (json['latitude'] as num?)?.toDouble() ?? 0.0;
+    longitude = (json['longitude'] as num?)?.toDouble() ?? 0.0;
   }
 }

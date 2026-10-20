@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/db/shared_prefs.dart';
-import 'package:projeto/db/userDAO.dart';
-import 'package:projeto/pages/cadastro_page.dart';
-import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/api/user_api.dart';
+import 'package:projeto_pmob/db/shared_prefs.dart';
+import 'package:projeto_pmob/db/userDAO.dart';
+import 'package:projeto_pmob/pages/cadastro_page.dart';
+import 'package:projeto_pmob/pages/home_screen.dart';
+import 'package:projeto_pmob/api/user_api.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/domain/card_detalhes.dart';
-import 'package:projeto/domain/post_receita.dart';
-import 'package:projeto/pages/maps_page.dart';
-import 'package:projeto/widget/container_detalhes.dart';
+import 'package:projeto_pmob/domain/card_detalhes.dart';
+import 'package:projeto_pmob/domain/post_receita.dart';
+import 'package:projeto_pmob/pages/maps_page.dart';
+import 'package:projeto_pmob/widget/container_detalhes.dart';
 
 class ContainerPosts extends StatefulWidget {
-  PostReceita postReceita;
+  final PostReceita postReceita;
 
-  ContainerPosts({super.key, required this.postReceita});
+  const ContainerPosts({super.key, required this.postReceita});
 
   @override
   State<ContainerPosts> createState() => _ContainerPostsState();
@@ -17,7 +17,7 @@ class _ContainerPostsState extends State<ContainerPosts> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -25,104 +25,134 @@ class _ContainerPostsState extends State<ContainerPosts> {
           Row(
             children: [
               buildcircleAvatar(widget.postReceita.fotodeperfil),
-              SizedBox(width: 12),
-              Text(widget.postReceita.nomeusuario,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Montserrat',
-                      color: Color(0xFF0a27eb)
-                  )),
-              Spacer(flex: 2),
-              Text(widget.postReceita.dataehora,
-                  style: TextStyle(
-                      fontSize: 12, fontFamily: 'Montserrat-Regular'))
+              const SizedBox(width: 12),
+              Text(
+                widget.postReceita.nomeusuario,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Montserrat',
+                  color: Color(0xFF0a27eb),
+                ),
+              ),
+              const Spacer(flex: 2),
+              Text(
+                widget.postReceita.dataehora,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'Montserrat-Regular',
+                ),
+              )
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ClipRRect(
-            child: Image.network(widget.postReceita.fotopost, height: 200, fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              widget.postReceita.fotopost,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Row(
             children: [
               Column(
                 children: [
-                  Icon(Icons.favorite, size: 25, color: Color(0xFF0a27eb)),
-                  Text(widget.postReceita.likes,
-                      style: TextStyle(
-                          color: Color(0xFF0a27eb),
-                          fontFamily: 'Montserrat-Regular',
-                          fontSize: 10))
+                  const Icon(Icons.favorite, size: 25, color: Color(0xFF0a27eb)),
+                  Text(
+                    widget.postReceita.likes,
+                    style: const TextStyle(
+                      color: Color(0xFF0a27eb),
+                      fontFamily: 'Montserrat-Regular',
+                      fontSize: 10,
+                    ),
+                  )
                 ],
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 children: [
-                  Icon(Icons.comment_rounded,
-                      size: 25, color: Color(0xFF0a27eb)),
-                  Text(widget.postReceita.comentarios,
-                      style: TextStyle(
-                          color: Color(0xFF0a27eb),
-                          fontFamily: 'Montserrat-Regular',
-                          fontSize: 10))
+                  const Icon(Icons.comment_rounded, size: 25, color: Color(0xFF0a27eb)),
+                  Text(
+                    widget.postReceita.comentarios,
+                    style: const TextStyle(
+                      color: Color(0xFF0a27eb),
+                      fontFamily: 'Montserrat-Regular',
+                      fontSize: 10,
+                    ),
+                  )
                 ],
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 children: [
-                  Icon(Icons.share, size: 25, color: Color(0xFF0a27eb)),
-                  Text(widget.postReceita.compartilhamentos,
-                      style: TextStyle(
-                          color: Color(0xFF0a27eb),
-                          fontFamily: 'Montserrat-Regular',
-                          fontSize: 10))
+                  const Icon(Icons.share, size: 25, color: Color(0xFF0a27eb)),
+                  Text(
+                    widget.postReceita.compartilhamentos,
+                    style: const TextStyle(
+                      color: Color(0xFF0a27eb),
+                      fontFamily: 'Montserrat-Regular',
+                      fontSize: 10,
+                    ),
+                  )
                 ],
               ),
             ],
           ),
-          SizedBox(height: 10),
-          Text(widget.postReceita.legenda,
-              style: TextStyle(
-                  fontSize: 14, fontFamily: 'Montserrat-Regular')),
-          SizedBox(height: 12),
-          InkWell(
-            onTap: () {
-              setState(() {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MapsPage())
-                    );
-              });
-            },
-            child: Text(
-                'VER PAÍS DE ORIGEM DO PRATO',
-                style: TextStyle(
-                    color: Color(0xFF0a27eb),
-                    fontFamily: 'Montserrat-Regular',
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold
-                )
+          const SizedBox(height: 10),
+          Text(
+            widget.postReceita.legenda,
+            style: const TextStyle(
+              fontSize: 14,
+              fontFamily: 'Montserrat-Regular',
             ),
           ),
-          SizedBox(height: 10),
-          ContainerDetalhes(cardDetalhes: CardDetalhes(
+          const SizedBox(height: 12),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MapsPage(
+                    latitude: widget.postReceita.latitude,
+                    longitude: widget.postReceita.longitude,
+                    nomereceita: widget.postReceita.nomereceita,
+                  ),
+                ),
+              );
+            },
+            child: const Text(
+              'VER PAÍS DE ORIGEM DO PRATO',
+              style: TextStyle(
+                color: Color(0xFF0a27eb),
+                fontFamily: 'Montserrat-Regular',
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          ContainerDetalhes(
+            cardDetalhes: CardDetalhes(
               nomereceita: widget.postReceita.nomereceita,
               temporeceita: widget.postReceita.temporeceita,
               nivelreceita: widget.postReceita.nivelreceita,
               fotoreceita: widget.postReceita.fotoreceita,
               ingredientes: widget.postReceita.ingredientes,
-              preparo: widget.postReceita.preparo
-          )
+              preparo: widget.postReceita.preparo,
+              latitude: widget.postReceita.latitude,
+              longitude: widget.postReceita.longitude,
+            ),
           )
         ],
       ),
     );
   }
 
-  buildcircleAvatar(String profilephoto) {
+  Widget buildcircleAvatar(String profilephoto) {
     return CircleAvatar(
       radius: 23,
-      backgroundColor: Color(0xFF0a27eb),
+      backgroundColor: const Color(0xFF0a27eb),
       child: CircleAvatar(
         radius: 21,
         backgroundImage: NetworkImage(profilephoto),

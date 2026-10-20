@@ -3,47 +3,60 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapsPage extends StatefulWidget {
-  const MapsPage({super.key});
+  final double latitude;
+  final double longitude;
+  final String nomereceita;
+
+  const MapsPage({
+    super.key,
+    required this.latitude,
+    required this.longitude,
+    required this.nomereceita,
+  });
 
   @override
-  State<MapsPage> createState() => MapsPageState();
+  State<MapsPage> createState() => _MapsPageState();
 }
 
-class MapsPageState extends State<MapsPage> {
+class _MapsPageState extends State<MapsPage> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(37.43296265331129, -122.08832357078792),
-    tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
-  );
 
   @override
   Widget build(BuildContext context) {
+    final LatLng localizacao = LatLng(widget.latitude, widget.longitude);
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Origem: ${widget.nomereceita}',
+          style: const TextStyle(
+            fontFamily: 'Montserrat',
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF0a27eb),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
+        mapType: MapType.normal,
+        initialCameraPosition: CameraPosition(
+          target: localizacao,
+          zoom: 11,
+        ),
+        markers: {
+          Marker(
+            markerId: const MarkerId('origem_prato'),
+            position: localizacao,
+            infoWindow: InfoWindow(
+              title: widget.nomereceita,
+              snippet: 'País de Origem',
+            ),
+          ),
+        },
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
     );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }

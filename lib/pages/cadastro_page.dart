@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/db/shared_prefs.dart';
-import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/api/user_api.dart';
-import 'package:projeto/domain/user.dart';
+import 'package:projeto_pmob/db/shared_prefs.dart';
+import 'package:projeto_pmob/pages/home_screen.dart';
+import 'package:projeto_pmob/api/user_api.dart';
+import "package:projeto_pmob/domain/user.dart";
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});

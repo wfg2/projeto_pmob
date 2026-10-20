@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/api/PostReceita_api.dart';
-import 'package:projeto/db/PostReceitaDAO.dart';
-import 'package:projeto/domain/post_receita.dart';
-import 'package:projeto/pages/login_page.dart';
-import 'package:projeto/widget/container_posts.dart';
-import 'package:projeto/db/shared_prefs.dart';
+import 'package:projeto_pmob/api/PostReceita_api.dart';
+import 'package:projeto_pmob/db/PostReceitaDAO.dart';
+import 'package:projeto_pmob/domain/post_receita.dart';
+import 'package:projeto_pmob/pages/login_page.dart';
+import 'package:projeto_pmob/widget/container_posts.dart';
+import 'package:projeto_pmob/db/shared_prefs.dart';
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);

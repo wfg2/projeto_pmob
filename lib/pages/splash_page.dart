@@ -1,6 +1,6 @@
-import 'package:projeto/db/shared_prefs.dart';
-import 'package:projeto/pages/home_screen.dart';
-import 'package:projeto/pages/login_page.dart';
+import 'package:projeto_pmob/db/shared_prefs.dart';
+import 'package:projeto_pmob/pages/home_screen.dart';
+import 'package:projeto_pmob/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {

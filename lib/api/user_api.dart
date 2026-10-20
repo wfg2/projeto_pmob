@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:projeto/domain/user.dart';
+import 'package:projeto_pmob/domain/user.dart';
 
 class UserApi {
   final Dio dio = Dio();

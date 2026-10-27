@@ -32,7 +32,12 @@ class _HomePageState extends State<HomePage> {
           ),
         )
     ),
-    MapSample()
+    Center(
+      child: Text(
+        'perfil',
+        style: TextStyle(fontSize: 32),
+      ),
+    )
   ];
 
   @override
@@ -81,9 +86,9 @@ class _HomePageState extends State<HomePage> {
             label: 'Favoritos',
             activeIcon: Icon(Icons.favorite)),
         BottomNavigationBarItem(
-            icon: Icon(Icons.public_outlined),
-            label: 'Mapas',
-            activeIcon: Icon(Icons.public)),
+            icon: Icon(Icons.person_outline),
+            label: 'Perfil',
+            activeIcon: Icon(Icons.person)),
       ],
     );
   }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapSample extends StatefulWidget {
-  const MapSample({super.key});
+  final LatLng location;
+
+  MapSample({super.key, required this.location});
 
   @override
   State<MapSample> createState() => MapSampleState();
@@ -11,23 +13,38 @@ class MapSample extends StatefulWidget {
 
 class MapSampleState extends State<MapSample> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    // Coordenadas latitude e longitude do IFAL ARAPIRACA
-    target: LatLng(-9.745618, -36.631333),
-    zoom: 14.4746,
-  );
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 400,
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition: CameraPosition(target: widget.location, zoom: 6.9),
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 16,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 32),
+                ),
+              ),
+            ],
+          )
+
+      ]
       )
     );
   }

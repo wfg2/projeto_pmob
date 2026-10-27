@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projeto/domain/meals.dart';
+import 'package:projeto/paginas/map_sample.dart';
 import '../api/meals_api.dart';
+import 'package:geocoding/geocoding.dart';
 
 class DetailPage extends StatefulWidget {
   Meals meals;
@@ -180,43 +183,59 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   buildInfos({required Icon icon, required String text, required String valor}) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-        decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: Color(0xFF5C6B9C),
-              width: 1,
+    return InkWell(
+      onTap: () async {
+        final Geocoding geocoding = Geocoding();
+        List<Location> locations = await geocoding.locationFromAddress(widget.meals.pais);
+        LatLng location = LatLng(locations[0].latitude, locations[0].longitude);
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) {
+                  return MapSample(location: location);
+                }
             )
-        ),
-        child: Row(
-              children: [
-                icon,
-                SizedBox(width: 6),
-                Text(
-                  text,
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+          decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(
+                color: Color(0xFF5C6B9C),
+                width: 1,
+              )
+          ),
+          child: Row(
+                children: [
+                  icon,
+                  SizedBox(width: 6),
+                  Text(
+                    text,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 12,
+                        color: Color(0xFF5C6B9C),
+                        fontWeight: FontWeight.w600
+                      ),
+                  ),
+                  SizedBox(height: 6),
+                  Text(
+                    valor,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 12,
                       color: Color(0xFF5C6B9C),
-                      fontWeight: FontWeight.w600
                     ),
-                ),
-                SizedBox(height: 6),
-                Text(
-                  valor,
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 12,
-                    color: Color(0xFF5C6B9C),
-                  ),
-                )
-              ],
-            ),
-        ),
+                  )
+                ],
+              ),
+          ),
+      ),
     );
   }
 

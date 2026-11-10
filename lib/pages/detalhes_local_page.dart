@@ -1,13 +1,15 @@
+import 'package:flutter/cupertino.dart';
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapsPage extends StatefulWidget {
+class DetalhesLocalPage extends StatefulWidget {
   final double latitude;
   final double longitude;
   final String nomereceita;
 
-  const MapsPage({
+  const DetalhesLocalPage({
     super.key,
     required this.latitude,
     required this.longitude,
@@ -15,10 +17,10 @@ class MapsPage extends StatefulWidget {
   });
 
   @override
-  State<MapsPage> createState() => _MapsPageState();
+  State<DetalhesLocalPage> createState() => _MapsPageState();
 }
 
-class _MapsPageState extends State<MapsPage> {
+class _MapsPageState extends State<DetalhesLocalPage> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   @override
@@ -60,3 +62,4 @@ class _MapsPageState extends State<MapsPage> {
     );
   }
 }
+

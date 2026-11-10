@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 class DBHelper {
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
-    String dbNome = 'dende.db';
+    String dbNome = 'dende.db v2';
     String dbPath = join(path, dbNome);
 
     Database db = await openDatabase(dbPath, version: 1, onCreate: onCreateDB);

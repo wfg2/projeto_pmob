@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pmob/domain/card_detalhes.dart';
 import 'package:projeto_pmob/domain/post_receita.dart';
-import 'package:projeto_pmob/pages/maps_page.dart';
+import 'package:projeto_pmob/pages/detalhes_local_page.dart';
 import 'package:projeto_pmob/widget/container_detalhes.dart';
 
 class ContainerPosts extends StatefulWidget {
@@ -113,7 +113,7 @@ class _ContainerPostsState extends State<ContainerPosts> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MapsPage(
+                  builder: (context) => DetalhesLocalPage(
                     latitude: widget.postReceita.latitude,
                     longitude: widget.postReceita.longitude,
                     nomereceita: widget.postReceita.nomereceita,

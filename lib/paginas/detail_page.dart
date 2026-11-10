@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projeto/domain/meals.dart';
 import 'package:projeto/paginas/map_sample.dart';
@@ -189,11 +190,38 @@ class _DetailPageState extends State<DetailPage> {
         List<Location> locations = await geocoding.locationFromAddress(widget.meals.pais);
         LatLng location = LatLng(locations[0].latitude, locations[0].longitude);
 
+        var myPosition = await _determinePosition();
+        LatLng myLocation = LatLng(myPosition.latitude, myPosition.longitude);
+
+        double distance = Geolocator.distanceBetween(
+            myLocation.latitude,
+            myLocation.longitude,
+            location.latitude,
+            location.longitude
+        );
+
+        double distanceInM = distance/1000;
+
+        Set<Marker> markers = {
+          Marker(
+            markerId: MarkerId('1'),
+            position: myLocation,
+            infoWindow: InfoWindow(title: 'Você está aqui!')
+          ),
+          Marker(
+            markerId: MarkerId('2'),
+            position: location,
+            infoWindow: InfoWindow(
+              title: widget.meals.pais,
+                snippet: 'Distância de ${distanceInM.toStringAsFixed(2)} km')
+          )
+        };
+
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) {
-                  return MapSample(location: location);
+                  return MapSample(location: location, markers: markers);
                 }
             )
         );
@@ -346,6 +374,33 @@ class _DetailPageState extends State<DetailPage> {
           icon: Icon(Icons.arrow_back_ios, color: Colors.transparent, size: 50)
       ),
     );
+  }
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.',
+      );
+    }
+
+    return await Geolocator.getCurrentPosition();
   }
 
 }

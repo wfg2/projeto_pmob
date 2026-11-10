@@ -2,10 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../domain/meals.dart';
+
 class MapSample extends StatefulWidget {
   final LatLng location;
+  Set<Marker> markers;
 
-  MapSample({super.key, required this.location});
+  MapSample({super.key, required this.location, required this.markers});
 
   @override
   State<MapSample> createState() => MapSampleState();
@@ -17,19 +20,15 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Stack(
+      body: Stack(
             children: [
-              Container(
-                height: 400,
-                child: GoogleMap(
-                  mapType: MapType.normal,
-                  initialCameraPosition: CameraPosition(target: widget.location, zoom: 6.9),
-                  onMapCreated: (GoogleMapController controller) {
-                    _controller.complete(controller);
-                  },
-                ),
+              GoogleMap(
+                mapType: MapType.terrain,
+                markers: widget.markers,
+                initialCameraPosition: CameraPosition(target: widget.location, zoom: 6.5),
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
               ),
               Positioned(
                 left: 16,
@@ -43,10 +42,9 @@ class MapSampleState extends State<MapSample> {
               ),
             ],
           )
-
-      ]
-      )
     );
+
+
   }
 
 

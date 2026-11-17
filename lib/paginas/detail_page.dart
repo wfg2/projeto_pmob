@@ -221,7 +221,7 @@ class _DetailPageState extends State<DetailPage> {
             context,
             MaterialPageRoute(
                 builder: (context) {
-                  return MapSample(location: location, markers: markers);
+                  return MapSample(location: location, markers: markers, meals: widget.meals);
                 }
             )
         );

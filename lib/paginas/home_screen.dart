@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projeto/paginas/map_sample.dart';
 import 'package:projeto/paginas/pagina_explorar.dart';
 import 'package:projeto/paginas/pagina_categoria.dart';
+import 'package:projeto/paginas/pagina_favoritos.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,14 +25,7 @@ class _HomePageState extends State<HomePage> {
     ),
     TelaCategoria(),
     TelaExplorar(),
-    Center(
-        child: Text(
-          'Favoritos',
-          style: TextStyle(
-              fontSize: 32
-          ),
-        )
-    ),
+    PaginaFavoritos(),
     Center(
       child: Text(
         'perfil',

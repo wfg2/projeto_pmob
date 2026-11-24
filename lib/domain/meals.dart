@@ -1,5 +1,6 @@
 import 'dart:math';
 class Meals {
+  final int id;
   final String nome;
   final String urlImagem;
   final String categoria;
@@ -10,6 +11,7 @@ class Meals {
   final String avaliacao;
 
   Meals({
+    required this.id,
     required this.nome,
     required this.urlImagem,
     required this.categoria,
@@ -22,6 +24,7 @@ class Meals {
 
   factory Meals.fromJson(Map<String, dynamic> json) {
     return Meals(
+      id: json['idMeal'],
       nome: json['strMeal'] ?? '',
       urlImagem: json['strMealThumb'] ?? '',
       categoria: json['strCategory'] ?? '',

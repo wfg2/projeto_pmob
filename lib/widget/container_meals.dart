@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/domain/meals.dart';
 import 'package:projeto/paginas/detail_page.dart';
+import 'package:projeto/provider/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
 class ContainerMeals extends StatefulWidget {
   Meals meals;
@@ -94,11 +96,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
       
                               SizedBox(width: 5),
       
-                              Icon(
-                                size: 25,
-                                Icons.star_half_rounded,
-                                color: Color(0xFF2113FE),
-                              ),
+                              buildIconButton(context)
                             ]
                           )
                         ],
@@ -132,6 +130,21 @@ class _ContainerMealsState extends State<ContainerMeals> {
             ),
           )
       ),
+    );
+  }
+
+  IconButton buildIconButton(BuildContext context) {
+    bool isFavorite = context.watch<FavoriteProvider>().isFavorite(widget.meals);
+
+    return IconButton(
+      onPressed: () {
+        context.read<FavoriteProvider>().addFavorite(widget.meals);
+      },
+      icon: Icon(
+        isFavorite ? Icons.favorite : Icons.favorite_border,
+        size: 32,
+        color: isFavorite ? Color(0xFFE41D56) : Colors.grey,
+      )
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:projeto/pages/mapa.dart';
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MapSample()
+      home: TelaPerfil()
     )
   );
 }

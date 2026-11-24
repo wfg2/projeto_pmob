@@ -1,65 +1,82 @@
-import 'package:flutter/cupertino.dart';
-
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:projeto_pmob/domain/post_receita.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DetalhesLocalPage extends StatefulWidget {
-  final double latitude;
-  final double longitude;
-  final String nomereceita;
+  PostReceita postReceita;
+  LatLng location;
+  Set<Marker> markers;
 
-  const DetalhesLocalPage({
-    super.key,
-    required this.latitude,
-    required this.longitude,
-    required this.nomereceita,
-  });
+  DetalhesLocalPage({super.key, required this.postReceita, required this.location, required this.markers});
 
   @override
-  State<DetalhesLocalPage> createState() => _MapsPageState();
+  State<DetalhesLocalPage> createState() => _DetalhesLocalPageState();
 }
 
-class _MapsPageState extends State<DetalhesLocalPage> {
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
+class _DetalhesLocalPageState extends State<DetalhesLocalPage> {
+  PostReceita get postReceita => widget.postReceita;
 
   @override
   Widget build(BuildContext context) {
-    final LatLng localizacao = LatLng(widget.latitude, widget.longitude);
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Origem: ${widget.nomereceita}',
-          style: const TextStyle(
-            fontFamily: 'Montserrat',
-            color: Colors.white,
+      // appBar: AppBar(),
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              // Image.network(propriedade.urlImagem),
+              Container(
+                height: 400,
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  markers: widget.markers,
+                  initialCameraPosition: CameraPosition(target: widget.location, zoom: 14),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 16,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 32),
+                ),
+              ),
+            ],
           ),
-        ),
-        backgroundColor: const Color(0xFF0a27eb),
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: CameraPosition(
-          target: localizacao,
-          zoom: 11,
-        ),
-        markers: {
-          Marker(
-            markerId: const MarkerId('origem_prato'),
-            position: localizacao,
-            infoWindow: InfoWindow(
-              title: widget.nomereceita,
-              snippet: 'País de Origem',
-            ),
+          SizedBox(height: 24),
+          Column(
+            children: [
+              Text(
+                postReceita.local,
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Montserrat-Regular',
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Apartamento na Holanda',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontFamily: 'Montserrat-Regular',
+                ),
+              ),
+              Text(
+                '2 camas e banheiro privativo',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontFamily: 'Montserrat-Regular',
+                ),
+              ),
+            ],
           ),
-        },
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+        ],
       ),
     );
   }
 }
-

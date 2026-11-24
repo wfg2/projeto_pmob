@@ -19,8 +19,7 @@ class PostReceita {
   late List<String> preparo;
 
   // localização
-  late double latitude;
-  late double longitude;
+  late String local;
 
   PostReceita({
     required this.fotodeperfil,
@@ -40,8 +39,7 @@ class PostReceita {
     required this.ingredientes,
     required this.preparo,
     // localização
-    required this.latitude,
-    required this.longitude,
+    required this.local,
   });
 
   PostReceita.fromJson(Map<String, dynamic> json) {
@@ -63,7 +61,6 @@ class PostReceita {
     ingredientes = (json['ingredientes'] as String?)?.split('|||') ?? [];
     preparo = (json['preparo'] as String?)?.split('|||') ?? [];
 
-    latitude = (json['latitude'] as num?)?.toDouble() ?? 0.0;
-    longitude = (json['longitude'] as num?)?.toDouble() ?? 0.0;
+    local = json['local'];
   }
 }

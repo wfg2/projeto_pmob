@@ -53,11 +53,20 @@ class _ContainerMealsState extends State<ContainerMeals> {
                         topRight: Radius.circular(14),
                         topLeft: Radius.circular(14)
                     ),
-                    child: Image.network(
-                      widget.meals.urlImagem,
-                      height: 200,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                    child: Stack(
+                      children: [
+                        Image.network(
+                          widget.meals.urlImagem,
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          top: 16,
+                          right: 16,
+                          child: buildIconButton(context)
+                        )
+                      ]
                     ),
                   ),
       
@@ -80,7 +89,7 @@ class _ContainerMealsState extends State<ContainerMeals> {
                               )
                           ),
       
-                          SizedBox(width: 8),
+                          SizedBox(width: 6),
       
                           Row(
                             children: [
@@ -95,8 +104,9 @@ class _ContainerMealsState extends State<ContainerMeals> {
                               ),
       
                               SizedBox(width: 5),
-      
-                              buildIconButton(context)
+                              
+                              Icon(Icons.star_half, color: Color(0xFF2113FE))
+
                             ]
                           )
                         ],
@@ -134,16 +144,16 @@ class _ContainerMealsState extends State<ContainerMeals> {
   }
 
   IconButton buildIconButton(BuildContext context) {
-    bool isFavorite = context.watch<FavoriteProvider>().isFavorite(widget.meals);
+    FavoriteProvider provider = context.watch<FavoriteProvider>();
 
     return IconButton(
       onPressed: () {
         context.read<FavoriteProvider>().addFavorite(widget.meals);
       },
       icon: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border,
+        provider.isFavorite(widget.meals) ? Icons.favorite : Icons.favorite_border,
         size: 32,
-        color: isFavorite ? Color(0xFFE41D56) : Colors.grey,
+        color: provider.isFavorite(widget.meals) ? Color(0xFFE41D56) : Colors.grey,
       )
     );
   }

@@ -21,12 +21,15 @@ class _PaginaFavoritosState extends State<PaginaFavoritos> {
 
   @override
   Widget build(BuildContext context) {
-    List<Meals> listaMeals = context.read<FavoriteProvider>().favoritos;
+    List<Meals> listaMeals = context.watch<FavoriteProvider>().favoritos;
 
     return Scaffold(
-        body: ListView.builder(
+        body: listaMeals.isEmpty ?
+            Center(child: Text('Não há nenhuma receita favorita no momento!'))
+            : ListView.builder(
           itemCount: listaMeals.length,
           itemBuilder: (context, i) {
+
             return ContainerMeals(meals: listaMeals[i]);
           },
         )

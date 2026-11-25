@@ -1,6 +1,6 @@
 import 'dart:math';
 class Meals {
-  final int id;
+  final String id;
   final String nome;
   final String urlImagem;
   final String categoria;
